@@ -1,10 +1,12 @@
 package squarert
 
 import (
-	"net/http"
 	"encoding/json"
-	"elementary-service/src/models/squarert"
+	"io/ioutil"
 	"log"
+	"net/http"
+
+	"github.com/oreuta/elementary-service/src/models/squarert"
 )
 
 // `{"numbers":[1,2,3]}`
@@ -17,54 +19,58 @@ type outputNumbers struct {
 	SquareRoots []float64 `json:"square_roots"`
 }
 
-// Handler is a handler for SquareRoot
+const serviceName = "SquareRoots"
+
+func logError(err error) {
+	log.Printf("%s: ERROR %q", serviceName, err.Error())
+}
+
+// Handler is a REST wrapper for SquareRoot function
 func Handler(w http.ResponseWriter, r *http.Request) {
-	log.Println("handler started...")
-	body, err := r.GetBody()
-	log.Printf("body=%v err=%v\n", body, err)
-	if err != nil || body == nil {
-		w.WriteHeader(http.StatusBadRequest)
-		return
-	}
-	defer body.Close()
+	log.Printf("%s: start", serviceName)
+	defer log.Printf("%s: stop", serviceName)
 
-	data := make([]byte, 0)
-
-	_, err = body.Read(data)
+	body, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
-	log.Printf("data=%v\n", data)
+	defer r.Body.Close()
+
+	log.Printf("%s: input data %s", serviceName, body)
 	numbers := inputNumbers{}
-
-	err = json.Unmarshal(data, &numbers)
+	err = json.Unmarshal(body, &numbers)
 	if err != nil {
+		logError(err)
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
 
-	output, err := squarert.SquareRoot(numbers.Numbers)
-	log.Printf("output=%v err=%v\n", output, err)
+	outputData, err := squarert.SquareRoot(numbers.Numbers)
 	if err != nil {
+		logError(err)
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
+	log.Printf("%s: output data %v", serviceName, outputData)
 
-	outputJSON, err := json.Marshal(output)
-	log.Printf("json=%v err=%v\n", outputJSON, err)
+	outputStruct := outputNumbers{
+		SquareRoots: outputData,
+	}
+
+	outputJSON, err := json.Marshal(outputStruct)
 	if err != nil {
+		logError(err)
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
+
+	w.Header().Add("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
 
 	_, err = w.Write(outputJSON)
 	if err != nil {
+		logError(err)
 		w.WriteHeader(http.StatusInternalServerError)
-		return
 	}
-
-	header := w.Header()
-	header.Add("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
 }

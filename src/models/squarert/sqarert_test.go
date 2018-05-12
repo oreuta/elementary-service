@@ -21,12 +21,17 @@ func TestSquareRoot(t *testing.T) {
 			input:     []int{1, 2, 3, -1},
 			needError: true,
 		},
-		{},
+		{
+			name:      "no error, no numbers",
+			input:     []int{},
+			expRoots:  []float64{},
+			needError: false,
+		},
 	}
 
 	for _, testCase := range testCases {
 		testCase := testCase
-		t.Run(testCase.name, func(t *testing.T){
+		t.Run(testCase.name, func(t *testing.T) {
 			actRoots, err := SquareRoot(testCase.input)
 			if testCase.needError != (err != nil) { //XOR
 				t.Errorf("for returned error: want <nil> but got %v", err)
