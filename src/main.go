@@ -3,12 +3,12 @@ package main
 import (
 	"log"
 	"net/http"
+	"src/services/palindrome"
 
-	"github.com/oreuta/elementary-service/src/services/squarert"
 )
 
 func main() {
 	log.Println("Elementary-service started...")
-	http.HandleFunc("/squarert", squarert.Handler)
+	http.HandleFunc("/squarert", palindrome.Handler)
 	log.Fatal(http.ListenAndServe(":9090", nil))
 }
