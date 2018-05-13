@@ -31,13 +31,13 @@ func Checkthedata(lenght string, minSq string) (lenght1 int, minSq1 int, err err
 	return
 }
 
-func main() {
+/*func main() {
 	ll1, ms1, err := Checkthedata("4", "2")
 	arr, err := GetSquares(ll1, ms1)
 	str := Printwithcommas(arr)
 	fmt.Println("Numerical sequence separated by commas:  ", str)
 	fmt.Println(err)
-}
+}*/
 
 //Function in an infinite loop builds the sequence of natural digits those square is less than the one specified in the input data
 func GetSquares(lenght1, minSq1 int) (arr []int, err error) {
