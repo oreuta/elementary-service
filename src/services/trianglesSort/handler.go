@@ -8,7 +8,7 @@ import (
 	"log"
 )
 
-/* Input json example
+/*TrianglesBody Input json example
 {
 	"triangles": [{
 		"vertices": "ABC",
