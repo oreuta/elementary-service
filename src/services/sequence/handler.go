@@ -1,21 +1,21 @@
-package squarert
+package sequence
 
 import (
 	"encoding/json"
-	"io/ioutil"
 	"log"
 	"net/http"
-	"models/squarert"
+	"models/sequence"
 )
 
 // `{"numbers":[1,2,3]}`
-type inputNumbers struct {
-	Numbers []int
+type inputData struct {
+	lenght string
+	minSq string
 }
 
-// `{"square_roots":[1,1.41,1.7]}`
-type outputNumbers struct {
-	SquareRoots []float64 `json:"square_roots"`
+// `{"sequence_of_natural_digits":[1, 4, 7]}`
+type outputData struct {
+	Sequence string `json:"sequence_of_natural_digits"`
 }
 
 const serviceName = "SquareRoots"
@@ -27,37 +27,47 @@ func logError(err error) {
 // Handler is a REST wrapper for SquareRoot function
 func Handler(w http.ResponseWriter, r *http.Request) {
 	log.Printf("%s: start", serviceName)
-	defer log.Printf("%s: stop", serviceName)
+	/*defer log.Printf("%s: stop", serviceName)*/
 
-	body, err := ioutil.ReadAll(r.Body)
+	/*body, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
-	defer r.Body.Close()
+	defer r.Body.Close()*/
 
-	log.Printf("%s: input data %s", serviceName, body)
-	numbers := inputNumbers{}
+	/*log.Printf("%s: input data %s", serviceName, body)
+	numbers := inputData{}
 	err = json.Unmarshal(body, &numbers)
 	if err != nil {
 		logError(err)
 		w.WriteHeader(http.StatusBadRequest)
 		return
-	}
+	}*/
 
-	outputData, err := squarert.SquareRoot(numbers.Numbers)
+	ll1, ms1, err := sequence.Checkthedata("4", "5")
 	if err != nil {
 		logError(err)
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
-	log.Printf("%s: output data %v", serviceName, outputData)
+	log.Printf("%d, %d: output data %v", serviceName, ll1, ms1)
 
-	outputStruct := outputNumbers{
-		SquareRoots: outputData,
+	arr, err := sequence.GetSquares(ll1, ms1)
+	if err != nil {
+		logError(err)
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+	log.Printf("%s: output data %v", serviceName, arr)
+
+	str := sequence.Printwithcommas(arr)
+
+	output := outputData{
+		Sequence: str,
 	}
 
-	outputJSON, err := json.Marshal(outputStruct)
+	outputJSON, err := json.Marshal(output)
 	if err != nil {
 		logError(err)
 		w.WriteHeader(http.StatusInternalServerError)

@@ -1,4 +1,4 @@
-package src
+package sequence
 
 import (
 	"errors"
