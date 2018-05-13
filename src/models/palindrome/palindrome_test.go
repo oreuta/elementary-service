@@ -1,22 +1,19 @@
 package palindrome
 
-import (
-	"testing"
-     "src/models/palindrome"
-)
+import "testing"
 
 func TestHasPalindrome(t *testing.T) {
 
 	testCases := []struct {
 		name           string
 		input          string
-		expPalindromes []string
+		expPalindromes string
 		needError      bool
 	}{
 		{
 			name:           "no error, testing 'taat'",
 			input:          "taat",
-			expPalindromes: []string{"taat", "aa"},
+			expPalindromes: "taat aa ",
 			needError:      false,
 		},
 		{
@@ -40,23 +37,23 @@ func TestHasPalindrome(t *testing.T) {
 		{
 			name:           "no error, testing 'kayak'",
 			input:          "kayak",
-			expPalindromes: []string{"kayak", "aya"},
+			expPalindromes:"kayak aya ",
 			needError:      false,
 		},
 	}
-
 	for _, testCase := range testCases {
 		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
-			actPalindromes, err := palindrome.HasPalindrome(testCase.input)
+			actPalindromes, err := SubPalindromes(testCase.input)
 			if testCase.needError != (err != nil) {
 				t.Errorf("for returned error: want <nil> but got %v", err)
 			}
 			for i := range testCase.expPalindromes {
 				if testCase.expPalindromes[i] != actPalindromes[i] {
-					t.Errorf("expected %s but got %s", testCase.expPalindromes[i], actPalindromes[i])
+					t.Errorf("want %s but got %s", testCase.expPalindromes[i], actPalindromes[i])
 				}
 			}
 		})
 	}
 }
+

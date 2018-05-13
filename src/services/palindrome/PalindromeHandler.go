@@ -1,30 +1,29 @@
 package palindrome
 import (
 	"encoding/json"
-	"io/ioutil"
 	"log"
 	"net/http"
-	"src/models/palindrome"
-
+	"io/ioutil"
+	palindrome2 "elements/elementary-service/src/models/palindrome"
 )
 
 
 type inputString struct {
-	Strings string
+	inputString string
 }
 
 
 type outputStrings struct {
-	HasPalindrome []string `json:"has_palindrome"`
+	SubPalindromes string `json:"sub_palindromes"`
 }
 
-const serviceName = "HasPalindrome"
+const serviceName = "SubPalindromes"
 
 func logError(err error) {
 	log.Printf("%s: ERROR %q", serviceName, err.Error())
 }
 
-// Handler is a REST wrapper for SquareRoot function
+// Handler is a REST wrapper for SubPalindromes function
 func Handler(w http.ResponseWriter, r *http.Request) {
 	log.Printf("%s: start", serviceName)
 	defer log.Printf("%s: stop", serviceName)
@@ -46,7 +45,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	outputData, err := palindrome.HasPalindrome(strings.Strings)
+	outputData, err := palindrome2.SubPalindromes(strings.inputString)
 	if err != nil {
 		logError(err)
 		w.WriteHeader(http.StatusBadRequest)
@@ -55,7 +54,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	log.Printf("%s: output data %v", serviceName, outputData)
 
 	outputStruct := outputStrings{
-		HasPalindrome: outputData,
+		SubPalindromes: outputData,
 	}
 
 	outputJSON, err := json.Marshal(outputStruct)
