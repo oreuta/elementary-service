@@ -5,49 +5,38 @@ import (
 	"fmt"
 	"regexp"
 	"strconv"
+	"strings"
 )
 
-//Function Checkthedata validates the input data and ensures that it doesn;t contain any separators, symbols etc
-func Checkthedata(lenght string, minSq string) (lenght1 int, minSq1 int, err error) {
-	r := regexp.MustCompile("^[0-9]+$")
-	if r.MatchString(minSq) != true || r.MatchString(lenght) != true ||
-		r.MatchString(minSq) != true && r.MatchString(lenght) != true {
-		fmt.Println("Error. You entered a letter or a number with a separator.Program exited")
-		return 0, 0, errors.New("Input data contain symbols")
-	}
+//Function Validatetheinput validates the input data and ensures that it doesn't contain any separators, symbols etc
+//that may endanger the correct work of the algorithm
 
-	lenght1, _ = strconv.Atoi(lenght)
-	minSq1, _ = strconv.Atoi(minSq)
-	if lenght1 < 0 || minSq1 < 0 {
-		fmt.Println("You entered a negative number. Program excited")
-		return lenght1, minSq1, errors.New("Negative numbers used as an input data")
+func Validatetheinput(lenghtofthesequence, minsquare string,r *regexp.Regexp) (lenghtofthesequence1, minsquare1 int, err error) {
+	if !r.MatchString(minsquare) || !r.MatchString(lenghtofthesequence)  ||
+		!r.MatchString(minsquare) && !r.MatchString(lenghtofthesequence)  {
+		return 0, 0, errors.New("Input data contain symbols or a separator")
 	}
-	if lenght1 == 0 || minSq1 == 0 || lenght1 == 0 && minSq1 == 0 {
-		fmt.Println("Either of two values equals to 0")
-		return lenght1, minSq1, errors.New("One or both values is/are 0")
+	lenghtofthesequence1, _ = strconv.Atoi(lenghtofthesequence)
+	minsquare1, _ = strconv.Atoi(minsquare)
+	if lenghtofthesequence1 < 0 || minsquare1 < 0 {
+		return 0, 0, errors.New("Negative numbers used as an input data")
+	}
+	if lenghtofthesequence1 == 0 || minsquare1 == 0 || lenghtofthesequence1 == 0 && minsquare1 == 0 {
+		return 0, 0, errors.New("One or both values is/are 0")
 	} else {
-		GetSquares(lenght1, minSq1)
+		GetSquares(lenghtofthesequence1, minsquare1)
 	}
 	return
 }
 
-/*func main() {
-	ll1, ms1, err := Checkthedata("4", "2")
-	arr, err := GetSquares(ll1, ms1)
-	str := Printwithcommas(arr)
-	fmt.Println("Numerical sequence separated by commas:  ", str)
-	fmt.Println(err)
-}*/
-
-//Function in an infinite loop builds the sequence of natural digits those square is less than the one specified in the input data
-func GetSquares(lenght1, minSq1 int) (arr []int, err error) {
-	var sq int
-	j := 0
-	arr = []int{}
+//getSquares builds an infinite loop with the sequence of natural digits those square
+// is less than the one specified in the input data
+func GetSquares(lenghtofthesequence1, minsquare1 int) (arr []int, err error) {
+	var j, sq int
 	for {
 		sq = j * j
-		if sq > minSq1 {
-			if len(arr) == lenght1 {
+		if sq > minsquare1 {
+			if len(arr) == lenghtofthesequence1 {
 				break
 			}
 			arr = append(arr, sq)
@@ -55,22 +44,12 @@ func GetSquares(lenght1, minSq1 int) (arr []int, err error) {
 		j++
 	}
 	if err != nil {
-		fmt.Println("Program exited with error", err)
+		return arr, errors.New("Program exited with error")
 	}
 	return
 }
 
-//Function Printwithcommas represents the array of digits as a string with commas between the numbers
-func Printwithcommas(arr []int) (string) {
-	if len(arr) == 0 {
-		return " "
-	}
-	estimate := len(arr) * 4
-	b := make([]byte, 0, estimate)
-	for _, n := range arr {
-		b = strconv.AppendInt(b, int64(n), 10)
-		b = append(b, ',')
-	}
-	b = b[:len(b)-1]
-	return string(b)
+//Function PrintWithCommas represents the array of digits as a string with commas between the numbers
+func PrintWithCommas(arr []int) (string) {
+	return strings.Replace(strings.Trim(fmt.Sprintf("%v", arr), "[]"), " ", ", ", -1)
 }

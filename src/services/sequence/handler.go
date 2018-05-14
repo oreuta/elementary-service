@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"models/sequence"
+	"regexp"
 )
 
 // `{"numbers":[1,2,3]}`
@@ -45,7 +46,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}*/
 
-	ll1, ms1, err := sequence.Checkthedata("4", "5")
+	ll1, ms1, err := sequence.Validatetheinput("4", "5", r)
 	if err != nil {
 		logError(err)
 		w.WriteHeader(http.StatusBadRequest)
@@ -61,7 +62,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	}
 	log.Printf("%s: output data %v", serviceName, arr)
 
-	str := sequence.Printwithcommas(arr)
+	str := sequence.PrintWithCommas(arr)
 
 	output := outputData{
 		Sequence: str,
