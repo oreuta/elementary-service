@@ -1,61 +1,70 @@
-package squarert
+package trianglesSort
 
 import (
-	"encoding/json"
-	"io/ioutil"
-	"log"
+	"github.com/elementary-service/src/models/trianglesSort"
 	"net/http"
-
-	"github.com/elementary-service/src/models/squarert"
+	"io/ioutil"
+	"encoding/json"
+	"log"
 )
 
-// `{"numbers":[1,2,3]}`
-type inputNumbers struct {
-	Numbers []int
+/*TrianglesBody Input json example
+{
+	"triangles": [{
+		"vertices": "ABC",
+		"a": 10,
+		"b": 20,
+		"c": 22.36
+	}, {
+		"vertices": "CBA",
+		"a": 16,
+		"b": 15,
+		"c": 6
+	}, {
+		"vertices": "BAC",
+		"a": 10,
+		"b": 9,
+		"c": 16
+	}]
+}
+ */
+type TrianglesBody struct {
+	Triangles []trianglesSort.Triangle `json:"triangles"`
 }
 
-// `{"square_roots":[1,1.41,1.7]}`
-type outputNumbers struct {
-	SquareRoots []float64 `json:"square_roots"`
-}
-
-const serviceName = "SquareRoots"
+const serviceName = "TriangleSort"
 
 func logError(err error) {
 	log.Printf("%s: ERROR %q", serviceName, err.Error())
 }
 
-// Handler is a REST wrapper for SquareRoot function
+// Handler is a REST wrapper for TrianglesSort function
 func Handler(w http.ResponseWriter, r *http.Request) {
-	log.Printf("%s: start", serviceName)
-	defer log.Printf("%s: stop", serviceName)
-
 	body, err := ioutil.ReadAll(r.Body)
+
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
 	defer r.Body.Close()
 
-	log.Printf("%s: input data %s", serviceName, body)
-	numbers := inputNumbers{}
-	err = json.Unmarshal(body, &numbers)
+	trianglesToSort := TrianglesBody{}
+	err = json.Unmarshal(body, &trianglesToSort)
 	if err != nil {
 		logError(err)
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
 
-	outputData, err := squarert.SquareRoot(numbers.Numbers)
+	outputData, err := trianglesSort.TrianglesSquareSort(trianglesToSort.Triangles)
 	if err != nil {
 		logError(err)
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
-	log.Printf("%s: output data %v", serviceName, outputData)
 
-	outputStruct := outputNumbers{
-		SquareRoots: outputData,
+	outputStruct := TrianglesBody{
+		Triangles: outputData,
 	}
 
 	outputJSON, err := json.Marshal(outputStruct)
@@ -67,10 +76,10 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Add("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
-
 	_, err = w.Write(outputJSON)
 	if err != nil {
 		logError(err)
 		w.WriteHeader(http.StatusInternalServerError)
+		return
 	}
 }
