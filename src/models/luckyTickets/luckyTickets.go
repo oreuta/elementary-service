@@ -1,19 +1,14 @@
 package luckyTickets
 
 import (
-	"fmt"
 	"errors"
 )
 
 func validate(obj *taskContext) (err error){
 	if (obj.min - 99999) < 0 || (obj.max - 99999) < 0 || obj.min > obj.max || obj.min > 999999 || obj.max > 999999{
-		return errors.New("incorrect data!")
+		return errors.New("incorrect data")
 	}
 	return
-}
-type errorInstruction struct {
-	Status string
-	Reason string
 }
 
 type taskContext struct {
@@ -61,6 +56,7 @@ func hardMethod(obj *taskContext) int {
 	return count
 }
 
+// GetLuckyTickets is a function for get the lucky tickets by simple and hard methods
 func GetLuckyTickets(obj *taskContext) (win winner, err error){
 	err = validate(obj)
 	if err != nil{
@@ -76,13 +72,4 @@ func GetLuckyTickets(obj *taskContext) (win winner, err error){
 		win.method = 3
 	}
 	return
-}
-
-func enterData() (obj *taskContext){
-	obj = new(taskContext)
-	fmt.Println("Enter the min-value (length > 6):")
-	fmt.Scan(&obj.min)
-	fmt.Println("Enter the max-value (length > 6):")
-	fmt.Scan(&obj.max)
-	return obj
 }

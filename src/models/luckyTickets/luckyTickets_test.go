@@ -45,7 +45,7 @@ func TestGetLuckyTickets(t *testing.T){
 			if testCase.needError != (err != nil){
 				t.Errorf("for returned error: want <nil> but got %v", err)
 			}
-			if reflect.DeepEqual(gotResult, testCase.expected) == false{
+			if !reflect.DeepEqual(gotResult, testCase.expected){
 				t.Fatalf("\n expected struct: %+v, \n but got: %+v", testCase.expected, gotResult)
 			}
 		})
