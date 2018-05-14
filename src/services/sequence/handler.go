@@ -4,14 +4,15 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
-	"github.com/oreuta/models/sequence"
+	"github.com/oreuta/elementary-service/src/models/sequence"
 	"regexp"
+	"io/ioutil"
 )
 
-// `{"numbers":[1,2,3]}`
+// `{"length": 5, "minSq": 10}`
 type inputData struct {
-	lenght string
-	minSq string
+	Length int
+	MinSq int
 }
 
 // `{"sequence_of_natural_digits":[1, 4, 7]}`
@@ -19,43 +20,40 @@ type outputData struct {
 	Sequence string `json:"sequence_of_natural_digits"`
 }
 
-const serviceName = "SquareRoots"
+const serviceName = "Sequence"
 
 func logError(err error) {
 	log.Printf("%s: ERROR %q", serviceName, err.Error())
 }
-r := regexp.MustCompile("^[0-9]+$")
+
+
+var re = regexp.MustCompile("^[0-9]+$")
+
+
 
 // Handler is a REST wrapper for SquareRoot function
 func Handler(w http.ResponseWriter, r *http.Request) {
 	log.Printf("%s: start", serviceName)
-	/*defer log.Printf("%s: stop", serviceName)*/
+	defer log.Printf("%s: stop", serviceName)
 
-	/*body, err := ioutil.ReadAll(r.Body)
+	body, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
-	defer r.Body.Close()*/
+	defer r.Body.Close()
 
-	/*log.Printf("%s: input data %s", serviceName, body)
-	numbers := inputData{}
-	err = json.Unmarshal(body, &numbers)
-	if err != nil {
-		logError(err)
-		w.WriteHeader(http.StatusBadRequest)
-		return
-	}*/
-
-	ll1, ms1, err := sequence.Validatetheinput("4", "5", r)
+	log.Printf("%s: input data %s", serviceName, body)
+	input := inputData{}
+	err = json.Unmarshal(body, &input)
 	if err != nil {
 		logError(err)
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
-	log.Printf("%d, %d: output data %v", serviceName, ll1, ms1)
 
-	arr, err := sequence.GetSquares(ll1, ms1)
+
+	arr, err := sequence.GetSquares(input.Length, input.MinSq)
 	if err != nil {
 		logError(err)
 		w.WriteHeader(http.StatusBadRequest)

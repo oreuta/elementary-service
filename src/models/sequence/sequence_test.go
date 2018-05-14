@@ -114,7 +114,7 @@ func TestSquares(t *testing.T) {
 			if testCase.needError == (err != nil) {
 				t.Errorf("For returned error: want <nil> but got %v", err)
 			}
-			for i,_ := range testCase.expectedResult {
+			for i := range testCase.expectedResult {
 				if testCase.expectedResult[i] != actualResult[i] {
 					t.Errorf("want %d but got %d", testCase.expectedResult[i], actualResult[i])
 				}
