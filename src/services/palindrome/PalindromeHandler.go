@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 	"io/ioutil"
-	palindrome2 "elements/elementary-service/src/models/palindrome"
+	palindrome2 "github.com/oreuta/elementary-service/src/models/palindrome"
 )
 
 

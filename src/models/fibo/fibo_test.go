@@ -52,7 +52,7 @@ func TestFibonacci(t *testing.T) {
 	for _, testCase := range testCases {
 		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
-			actFiboNumbs, err := fibo.Fibo(testCase.input)
+			actFiboNumbs, err := Fibo(testCase.input)
 			if testCase.needError != (err != nil) { //XOR
 				t.Errorf("for returned error: want <nil> but got %v", err)
 			}
