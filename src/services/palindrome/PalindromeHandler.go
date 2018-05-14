@@ -9,7 +9,7 @@ import (
 
 
 type inputString struct {
-	inputString string
+	InputString string
 }
 
 
@@ -45,7 +45,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	outputData, err := palindrome2.SubPalindromes(strings.inputString)
+	outputData, err := palindrome2.SubPalindromes(strings.InputString)
 	if err != nil {
 		logError(err)
 		w.WriteHeader(http.StatusBadRequest)
