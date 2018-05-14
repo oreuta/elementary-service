@@ -2,7 +2,7 @@ package main
 
 import (
 	"log"
-	"services"
+	"github.com/elementary-service/src/services"
 )
 
 func main() {

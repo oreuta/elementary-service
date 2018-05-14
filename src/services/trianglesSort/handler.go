@@ -1,7 +1,7 @@
 package trianglesSort
 
 import (
-	"models/trianglesSort"
+	"github.com/elementary-service/src/models/trianglesSort"
 	"net/http"
 	"io/ioutil"
 	"encoding/json"

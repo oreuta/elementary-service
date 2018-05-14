@@ -6,7 +6,7 @@ import (
 	"log"
 	"net/http"
 
-	"models/squarert"
+	"github.com/elementary-service/src/models/squarert"
 )
 
 // `{"numbers":[1,2,3]}`
