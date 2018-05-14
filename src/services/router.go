@@ -3,8 +3,8 @@ package services
 import (
 	"net/http"
 	"log"
-	"github.com/elementary-service/src/services/squarert"
-	"github.com/elementary-service/src/services/trianglesSort"
+	"github.com/oreuta/elementary-service/src/services/squarert"
+	"github.com/oreuta/elementary-service/src/services/trianglesSort"
 )
 
 //Router is a function that starts server and routes http requests

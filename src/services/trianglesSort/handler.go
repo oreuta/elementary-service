@@ -1,7 +1,7 @@
 package trianglesSort
 
 import (
-	"github.com/elementary-service/src/models/trianglesSort"
+	"github.com/oreuta/elementary-service/src/models/trianglesSort"
 	"net/http"
 	"io/ioutil"
 	"encoding/json"
