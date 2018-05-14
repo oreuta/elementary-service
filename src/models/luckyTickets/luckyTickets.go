@@ -5,7 +5,7 @@ import (
 	"errors"
 )
 
-func validate(obj *context) (err error){
+func validate(obj *taskContext) (err error){
 	if (obj.min - 99999) < 0 || (obj.max - 99999) < 0 || obj.min > obj.max || obj.min > 999999 || obj.max > 999999{
 		return errors.New("incorrect data!")
 	}
@@ -16,16 +16,16 @@ type errorInstruction struct {
 	Reason string
 }
 
-type context struct {
+type taskContext struct {
 	min, max int
 }
 
 type winner struct {
-	method                              string
+	method                              int
 	countFirstMethod, countSecondMethod int
 }
 
-func simpleMethod(obj *context) int {
+func simpleMethod(obj *taskContext) int {
 	var firstThreeLettersSum, lastThreeLettersSum, count int
 	for current := obj.min; current <= obj.max; current++ {
 		firstThreeLettersSum += (current / 100000)%10
@@ -43,7 +43,7 @@ func simpleMethod(obj *context) int {
 	return count
 }
 
-func hardMethod(obj *context) int {
+func hardMethod(obj *taskContext) int {
 	var even, odd, count int
 	for current := obj.min; current <= obj.max; current++ {
 		for i := 100000; i >= 1; i /= 10{
@@ -61,33 +61,28 @@ func hardMethod(obj *context) int {
 	return count
 }
 
-func GetLuckyTickets(obj *context) (win winner, err error){
-	check := validate(obj)
-	if check != nil{
-		win = winner{"incorrect data!", 0 ,0}
-		return win, check
+func GetLuckyTickets(obj *taskContext) (win winner, err error){
+	err = validate(obj)
+	if err != nil{
+		win = winner{0, 0 ,0}
+		return win, err
 	}
-	win = winner{"", simpleMethod(obj), hardMethod(obj)}
+	win = winner{0, simpleMethod(obj), hardMethod(obj)}
 	if win.countFirstMethod > win.countSecondMethod{
-		win.method = "Simple method is win!"
+		win.method = 1
 	}else if win.countFirstMethod < win.countSecondMethod{
-		win.method = "Hard method is win!"
+		win.method = 2
 	}else{
-		win.method = "Methods are equally!"
+		win.method = 3
 	}
 	return
 }
 
-func enterData() (obj *context){
-	obj = new(context)
+func enterData() (obj *taskContext){
+	obj = new(taskContext)
 	fmt.Println("Enter the min-value (length > 6):")
 	fmt.Scan(&obj.min)
 	fmt.Println("Enter the max-value (length > 6):")
 	fmt.Scan(&obj.max)
 	return obj
-}
-func main() {
-	obj := enterData()
-	winner, err := GetLuckyTickets(obj)
-	fmt.Println(winner, err)
 }
