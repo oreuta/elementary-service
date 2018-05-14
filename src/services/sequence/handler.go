@@ -24,6 +24,7 @@ const serviceName = "SquareRoots"
 func logError(err error) {
 	log.Printf("%s: ERROR %q", serviceName, err.Error())
 }
+r := regexp.MustCompile("^[0-9]+$")
 
 // Handler is a REST wrapper for SquareRoot function
 func Handler(w http.ResponseWriter, r *http.Request) {
