@@ -9,8 +9,8 @@ func TestValidationofInputData(t *testing.T) {
 	r := regexp.MustCompile("^[0-9]+$")
 	var testCases = []struct {
 		name            string
-		inputlenght     string
-		inputminsquare  string
+		inputLenght     string
+		inputMinSquare  string
 		needError         bool
 	}{
 		{"Test for two positive numbers",
@@ -67,7 +67,7 @@ func TestValidationofInputData(t *testing.T) {
 	for _, testCase := range testCases {
 		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
-			if gotlenght, gotminSq, gotError := Validatetheinput(testCase.inputlenght, testCase.inputminsquare, r); testCase.needError != (gotError != nil) {
+			if gotlenght, gotminSq, gotError := Validatetheinput(testCase.inputLenght, testCase.inputMinSquare, r); testCase.needError != (gotError != nil) {
 				t.Errorf("for returned error: want %s but got %d, %d, %s", testCase.name, gotlenght, gotminSq, gotError)
 			}
 		})
@@ -78,8 +78,8 @@ func TestValidationofInputData(t *testing.T) {
 func TestSquares(t *testing.T) {
 	var testCases = []struct {
 		name           string
-		lenght1        int
-		minSq1         int
+		lenght        int
+		minSq         int
 		expectedResult []int
 		needError      bool
 	}{
@@ -110,7 +110,7 @@ func TestSquares(t *testing.T) {
 	for _, testCase := range testCases {
 		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
-			actualResult, err := GetSquares(testCase.lenght1, testCase.minSq1)
+			actualResult, err := GetSquares(testCase.lenght, testCase.minSq)
 			if testCase.needError == (err != nil) {
 				t.Errorf("For returned error: want <nil> but got %v", err)
 			}
@@ -126,7 +126,7 @@ func TestSquares(t *testing.T) {
 func TestPrintingwithCommas(t *testing.T) {
 	var testCases = []struct {
 		name           string
-		inputdata      []int
+		inputData      []int
 		expectedResult string
 		needError      bool
 	}{
@@ -140,7 +140,7 @@ func TestPrintingwithCommas(t *testing.T) {
 	for _, testCase := range testCases {
 		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
-			actualResult := PrintWithCommas(testCase.inputdata)
+			actualResult := PrintWithCommas(testCase.inputData)
 			if testCase.expectedResult != actualResult {
 				t.Error("Print with commas return incorrect data")
 			}
