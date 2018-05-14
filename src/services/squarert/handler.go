@@ -6,7 +6,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/oreuta/elementary-service/src/models/squarert"
+	"models/squarert"
 )
 
 // `{"numbers":[1,2,3]}`
