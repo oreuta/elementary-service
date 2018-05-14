@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	errorSigned    = "Numbers cant be signed, or float or 0 or string"
+	errBadFormat   = "Numbers can't be signed, or float or 0 or string"
 	errorWrongName = "Names must contain only ABC vertices, and triangle have only 3 vertices"
 	errorInputSize = "Size of the input slice cant be 0 or 1. Can sort at least 2 triangles"
 )
@@ -21,6 +21,8 @@ type Triangle struct {
 	C        float64 `json:"c"`
 	Sqrt     float64 `json:"square,-"`
 }
+
+var regex = regexp.MustCompile(`^[A-C]{3}$`)
 
 // TrianglesSquareSort is a function that sorts triangles slice by single triangle area. Returns sorted slice and error
 func TrianglesSquareSort(trianglesToSortSlice []Triangle) ([]Triangle, error) {
@@ -43,23 +45,23 @@ func validateTriangles(t []Triangle) (err error) {
 	for i := range t {
 		err = t[i].validateSingleTriangle()
 		if err != nil {
-			return err
+			return
 		}
 		err = t[i].calculateSquare()
 		if err != nil {
-			return err
+			return
 		}
 	}
 	return
 }
 
 func (t *Triangle) validateSingleTriangle() (err error) {
-	var regex = regexp.MustCompile(`^[A-C]{3}$`) //своя реализация в анмаршалинге
+
 	if !regex.MatchString(t.Vertices) {
 		return errors.New(errorWrongName)
 	}
 	if t.A <= 0 || t.B <= 0 || t.C <= 0 {
-		return errors.New(errorSigned)
+		return errors.New(errBadFormat)
 	}
 	if !t.validateNamesFitNumbers() {
 		return errors.New("Names dont fit actual values")
@@ -69,6 +71,18 @@ func (t *Triangle) validateSingleTriangle() (err error) {
 
 func (t *Triangle) validateNamesFitNumbers() bool {
 	r := []rune(t.Vertices)
+	if t.validateNamedVerticeA(r) {
+		return true
+	} else if t.validateNamedVerticeB(r) {
+		return true
+	} else if t.validateNamedVerticeC(r) {
+		return true
+	} else {
+		return false
+	}
+}
+
+func (t *Triangle) validateNamedVerticeA(r []rune) (flag bool) {
 	if string(r[2]) == "A" && t.A > t.B && t.A > t.C {
 		if string(r[0]) == "B" && t.B < t.C {
 			return true
@@ -78,15 +92,23 @@ func (t *Triangle) validateNamesFitNumbers() bool {
 			return false
 		}
 	}
-	if string(r[2]) == "B" && t.B > t.A && t.A > t.C {
-		if string(r[0]) == "C" && t.C < t.A {
+	return
+}
+
+func (t *Triangle) validateNamedVerticeB(r []rune) (flag bool) {
+	if string(r[2]) == "A" && t.A > t.B && t.A > t.C {
+		if string(r[0]) == "B" && t.B < t.C {
 			return true
-		} else if string(r[0]) == "A" && t.A < t.C {
+		} else if string(r[0]) == "C" && t.C < t.B {
 			return true
 		} else {
 			return false
 		}
 	}
+	return
+}
+
+func (t *Triangle) validateNamedVerticeC(r []rune) (flag bool) {
 	if string(r[2]) == "C" && t.C > t.B && t.C > t.A {
 		if string(r[0]) == "B" && t.B < t.A {
 			return true
@@ -96,7 +118,7 @@ func (t *Triangle) validateNamesFitNumbers() bool {
 			return false
 		}
 	}
-	return false
+	return
 }
 
 func (t *Triangle) calculateSquare() (err error) {
