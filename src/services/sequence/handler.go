@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
-	"models/sequence"
+	"github.com/oreuta/models/sequence"
 	"regexp"
 )
 

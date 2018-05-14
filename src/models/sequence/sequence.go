@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-//Function Validatetheinput validates the input data and ensures that it doesn't contain any separators, symbols etc
+//Validatetheinput validates the input data and ensures that it doesn't contain any separators, symbols etc
 //that may endanger the correct work of the algorithm
 
 func Validatetheinput(lenghtOfSequence, minSquare string,r *regexp.Regexp) (lenghtOfSequence1, minsquare1 int, err error) {
