@@ -16,7 +16,7 @@ type inputNumbers struct {
 
 // `{"Fibonacci numbers":[0,1,1,2]}`
 type outputNumbers struct {
-	SquareRoots []int `json:"Fibonacci_numbers"`
+	FiboNumbers []int `json:"Fibonacci_numbers"`
 }
 
 const serviceName = "Fibonacci"
@@ -55,7 +55,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	log.Printf("%s: output data %v", serviceName, outputData)
 
 	outputStruct := outputNumbers{
-		SquareRoots: outputData,
+		FiboNumbers: outputData,
 	}
 
 	outputJSON, err := json.Marshal(outputStruct)

@@ -12,7 +12,7 @@ func TestFibonacci(t *testing.T) {
 	}{
 		{
 			name:      		"no error, 2 positive numbers",
-			input:     		[]int{1, 5},
+			input:     		[]int{0, 5},
 			fiboNumbers:  	[]int{0, 1, 1, 2, 3, 5},
 			needError: 		false,
 		},
@@ -58,7 +58,7 @@ func TestFibonacci(t *testing.T) {
 			}
 			for i := range testCase.fiboNumbers {
 				if testCase.fiboNumbers[i] != actFiboNumbs[i] {
-					t.Errorf("want %f but got %f", testCase.fiboNumbers[i], actFiboNumbs[i])
+					t.Errorf("want %v but got %v", testCase.fiboNumbers[i], actFiboNumbs[i])
 				}
 			}
 		})
