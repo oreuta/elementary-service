@@ -5,7 +5,7 @@ import (
 	"math"
 )
 
-func _fib(numIndex int) int{
+func getFiboNumberByIndex(numIndex int) int{
 
 		var result int
 		for i, first, second := 0, 0, 1; i <= numIndex; i, first, second = i+1, first+second, first {
@@ -17,7 +17,7 @@ func _fib(numIndex int) int{
 	}
 
 
-func lenghtOfNumber(numberToProceed int) (lenghtOfNumber int) {
+func getLenghtOfNumber(numberToProceed int) (lenghtOfNumber int) {
 	if numberToProceed == 0 {
 		return 1
 	} else {
@@ -59,7 +59,7 @@ func Fibo(numbers []int) (fiboNumbers []int, err error) {
 	if workMode == 2 {
 
 		for !rangeParsed {
-			fiboNumberTemp = _fib(tempNumber)
+			fiboNumberTemp = getFiboNumberByIndex(tempNumber)
 			if numbers[0] <= fiboNumberTemp && fiboNumberTemp <= numbers[1] {
 				fiboNumbers = append(fiboNumbers, fiboNumberTemp)
 			}
@@ -73,11 +73,11 @@ func Fibo(numbers []int) (fiboNumbers []int, err error) {
 	} else if workMode == 1 {
 
 		for !rangeParsed {
-			fiboNumberTemp = _fib(tempNumber)
-			if numbers[0] == lenghtOfNumber(fiboNumberTemp) {
+			fiboNumberTemp = getFiboNumberByIndex(tempNumber)
+			if numbers[0] == getLenghtOfNumber(fiboNumberTemp) {
 				fiboNumbers = append(fiboNumbers, fiboNumberTemp)
 			}
-			if lenghtOfNumber(fiboNumberTemp) > numbers[0] {
+			if getLenghtOfNumber(fiboNumberTemp) > numbers[0] {
 				rangeParsed = true
 			}
 			tempNumber++
