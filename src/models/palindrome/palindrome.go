@@ -9,15 +9,15 @@ import (
 func SubPalindromes(stringToExplore string) (resultString string, err error) {
 	stringToExplore = strings.Replace(stringToExplore, " ", "", -1)
 	var palindromeSubstrings [][]rune
-	err=valid(stringToExplore)
-	if err!= nil{
+	err = validate(stringToExplore)
+	if err != nil {
 		return stringToExplore, err
 	}
 	length := len([]rune(stringToExplore))
 	runedStr := []rune(stringToExplore)
-	for g, _ := range stringToExplore {
-		for substringLength := 1; substringLength <= length-g; substringLength++ {
-			substring := runedStr[g : g+substringLength]
+	for offset, _ := range stringToExplore {
+		for substringLength := 1; substringLength <= length-offset; substringLength++ {
+			substring := runedStr[offset : offset+substringLength]
 			if isPalindrome(substring) && len(substring) > 1 {
 				palindromeSubstrings = append(palindromeSubstrings, substring)
 			}
@@ -36,17 +36,17 @@ func isPalindrome(stringToTest []rune) bool {
 	length := len(stringToTest)
 	halfLength := length / 2
 
-	for i := 0; i <= halfLength; i++ {
-		if stringToTest[i] != stringToTest[length-i-1] {
+	for i, j := 0, length-1; i <= halfLength; i, j = i+1, j-1 {
+
+		if stringToTest[i] != stringToTest[j] {
 			return false
 		}
 	}
 	return true
 }
-func valid (stringToExplore string) (err error){
+func validate(stringToExplore string) (err error) {
 	if len([]rune(stringToExplore)) < 2 {
 		return errors.New("need to enter at least 2 symbols")
 	}
 	return nil
 }
-
