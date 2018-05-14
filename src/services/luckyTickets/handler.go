@@ -1,29 +1,34 @@
-package palindrome
+package luckyTickets
+
 import (
 	"encoding/json"
+	"io/ioutil"
 	"log"
 	"net/http"
-	"io/ioutil"
-	palindrome2 "github.com/oreuta/elementary-service/src/models/palindrome"
+
+	"github.com/oreuta/elementary-service/src/models/luckyTickets"
 )
 
-
-type inputString struct {
-	InputString string
+// `{"numbers":[1,2,3]}`
+type inputStruct struct {
+	taskContext struct{
+		min, max int
+	}
 }
 
+// `{"square_roots":[1,1.41,1.7]}`
+type outputStruct struct {
+	winner struct{
+		method, countFirstMethod, countSecondMethod int
+	}}
 
-type outputStrings struct {
-	SubPalindromes string `json:"sub_palindromes"`
-}
-
-const serviceName = "SubPalindromes"
+const serviceName = "LuckyTickets"
 
 func logError(err error) {
 	log.Printf("%s: ERROR %q", serviceName, err.Error())
 }
 
-// Handler is a REST wrapper for SubPalindromes function
+// Handler is a REST wrapper for SquareRoot function
 func Handler(w http.ResponseWriter, r *http.Request) {
 	log.Printf("%s: start", serviceName)
 	defer log.Printf("%s: stop", serviceName)
@@ -33,19 +38,18 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
-	 defer r.Body.Close()
-
+	defer r.Body.Close()
 
 	log.Printf("%s: input data %s", serviceName, body)
-	strings := inputString{}
-	err = json.Unmarshal(body, &strings)
+	numbers := inputStruct{}
+	err = json.Unmarshal(body, &numbers)
 	if err != nil {
 		logError(err)
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
 
-	outputData, err := palindrome2.SubPalindromes(strings.InputString)
+	outputData, err := luckyTickets.GetLuckyTickets(numbers)
 	if err != nil {
 		logError(err)
 		w.WriteHeader(http.StatusBadRequest)
@@ -53,8 +57,8 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	}
 	log.Printf("%s: output data %v", serviceName, outputData)
 
-	outputStruct := outputStrings{
-		SubPalindromes: outputData,
+	outputStruct := outputStruct{
+		winner: outputData,
 	}
 
 	outputJSON, err := json.Marshal(outputStruct)
