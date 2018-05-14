@@ -15,7 +15,8 @@ type taskContext struct {
 	min, max int
 }
 
-type winner struct {
+// Winner is a struct for return winner
+type Winner struct {
 	method                              int
 	countFirstMethod, countSecondMethod int
 }
@@ -57,13 +58,13 @@ func hardMethod(obj *taskContext) int {
 }
 
 // GetLuckyTickets is a function for get the lucky tickets by simple and hard methods
-func GetLuckyTickets(obj *taskContext) (win winner, err error){
+func GetLuckyTickets(obj *taskContext) (win Winner , err error){
 	err = validate(obj)
 	if err != nil{
-		win = winner{0, 0 ,0}
+		win = Winner {0, 0 ,0}
 		return win, err
 	}
-	win = winner{0, simpleMethod(obj), hardMethod(obj)}
+	win = Winner {0, simpleMethod(obj), hardMethod(obj)}
 	if win.countFirstMethod > win.countSecondMethod{
 		win.method = 1
 	}else if win.countFirstMethod < win.countSecondMethod{

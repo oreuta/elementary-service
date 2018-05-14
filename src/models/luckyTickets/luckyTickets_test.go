@@ -10,31 +10,31 @@ func TestGetLuckyTickets(t *testing.T){
 		name string
 		needError bool
 		inputData taskContext
-		expected winner
+		expected Winner
 	}{
 		{
 			name: "no error",
 			needError: false,
 			inputData: taskContext{100000, 100010},
-			expected: winner{1, 2, 0},
+			expected: Winner {1, 2, 0},
 		},
 		{
 			name: "numbers must be positive",
 			needError: true,
 			inputData: taskContext{-999999, 100000},
-			expected: winner{0, 0, 0},
+			expected: Winner {0, 0, 0},
 		},
 		{
 			name: "min must be lower than max and their length must be 6",
 			needError: true,
 			inputData: taskContext{75, 50},
-			expected: winner{0, 0, 0},
+			expected: Winner {0, 0, 0},
 		},
 		{
 			name: "their length must be 6",
 			needError: true,
 			inputData: taskContext{1234567, 12345678},
-			expected: winner{0, 0, 0},
+			expected: Winner {0, 0, 0},
 		},
 	}
 
