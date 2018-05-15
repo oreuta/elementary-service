@@ -1,12 +1,12 @@
-all:test get vet run
+all:get metal  run
   
 get:
 	go get -u gopkg.in/alecthomas/gometalinter.v2
 	gometalinter.v2 --install
-vet:
-	-gometalinter.v2 ./...
-test:
-	-go test -v -cover ./...
+
+metal: 
+	gometalinter.v2 ./...
+	go test ./...
 run:
-	go run src/main.go
+	go run main.go
     
