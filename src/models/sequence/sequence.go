@@ -7,7 +7,7 @@ import (
 )
 
 //ValidateTheInput validates the input data and ensures that it doesn't contain any separators, symbols etc
-//that may endanger the correct work of the algorithm
+//that may endanger the correct work of algorithm
 func ValidateTheInput(inputLength, inputMinSquare int) (outputLength, outputMinSquare int, err error) {
 	if inputLength < 0 || inputMinSquare < 0 {
 		return 0, 0, errors.New("Negative numbers used as an input data")

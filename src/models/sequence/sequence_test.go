@@ -14,7 +14,7 @@ func TestValidationInputData(t *testing.T) {
 	}{
 		{"Test for two positive numbers",
 			123,
-			24,
+			34,
 			false,
 		},
 
