@@ -38,7 +38,7 @@ func logError(err error) {
 	log.Printf("%s: ERROR %q", serviceName, err.Error())
 }
 
-// Handler is a REST wrapper for TrianglesSort function
+//Handler is a REST wrapper for TrianglesSort function
 func Handler(w http.ResponseWriter, r *http.Request) {
 	body, err := ioutil.ReadAll(r.Body)
 

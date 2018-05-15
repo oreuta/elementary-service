@@ -17,10 +17,30 @@ func TestTrianglesSquareSort(t *testing.T) {
 				{"BAC", 10, 9, 16, 0}},
 			needError: true,
 		},
-
 		{
 			name: "error, 3 triangles, names of vertices dont fit its values",
 			input: []Triangle{{"ABC", 10.0, 20.0, 22.36, 0},
+				{"CBA", 16.0, 15.0, 6, 0},
+				{"BAC", 16, 15, 6, 0}},
+			needError: true,
+		},
+		{
+			name: "error, 3 triangles, names of vertices dont fit its values, C first vertice",
+			input: []Triangle{{"CAB", 10.0, 23, 1, 0},
+				{"CBA", 16.0, 15.0, 6, 0},
+				{"BAC", 16, 15, 6, 0}},
+			needError: true,
+		},
+		{
+			name: "error, 3 triangles, names of vertices dont fit its values, C first vertice",
+			input: []Triangle{{"BAC", 22.36, 10, 20, 0},
+				{"CBA", 16.0, 15.0, 6, 0},
+				{"BAC", 16, 15, 6, 0}},
+			needError: true,
+		},
+		{
+			name: "error, 3 triangles, names of vertices dont fit its values, A first vertice",
+			input: []Triangle{{"ACB", 10.0, 17, 6, 0},
 				{"CBA", 16.0, 15.0, 6, 0},
 				{"BAC", 16, 15, 6, 0}},
 			needError: true,
