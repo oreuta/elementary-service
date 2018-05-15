@@ -2,7 +2,7 @@ package palindrome
 
 import "testing"
 
-func TestHasPalindrome(t *testing.T) {
+func TestFindSubPalindromes(t *testing.T) {
 
 	testCases := []struct {
 		name           string
@@ -44,7 +44,7 @@ func TestHasPalindrome(t *testing.T) {
 	for _, testCase := range testCases {
 		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
-			actPalindromes, err := SubPalindromes(testCase.input)
+			actPalindromes, err := FindSubPalindromes(testCase.input)
 			if testCase.needError != (err != nil) {
 				t.Errorf("for returned error: want <nil> but got %v", err)
 			}

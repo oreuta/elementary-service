@@ -5,8 +5,8 @@ import (
 	"strings"
 )
 
-// SubPalindromes returns a string of all subpalindromes of its argument
-func SubPalindromes(stringToExplore string) (resultString string, err error) {
+// FindSubPalindromes returns a string of all subpalindromes of its argument.
+func FindSubPalindromes(stringToExplore string) (resultString string, err error) {
 	stringToExplore = strings.Replace(stringToExplore, " ", "", -1)
 	var palindromeSubstrings [][]rune
 	err = validate(stringToExplore)
