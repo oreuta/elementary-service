@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 	"io/ioutil"
-	palindrome2 "github.com/oreuta/elementary-service/src/models/palindrome"
+	"github.com/oreuta/elementary-service/src/models/palindrome"
 )
 
 
@@ -45,7 +45,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	outputData, err := palindrome2.SubPalindromes(strings.InputString)
+	outputData, err := palindrome.FindSubPalindromes(strings.InputString)
 	if err != nil {
 		logError(err)
 		w.WriteHeader(http.StatusBadRequest)
