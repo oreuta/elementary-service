@@ -2,62 +2,84 @@ package sequence
 
 import (
 	"testing"
+	"regexp"
 )
 
-func TestValidationInputData(t *testing.T) {
-
+func TestValidationofInputData(t *testing.T) {
+	r := regexp.MustCompile("^[0-9]+$")
 	var testCases = []struct {
 		name            string
-		inputLenght     int
-		inputMinSquare  int
-		needError       bool
+		inputLenght     string
+		inputMinSquare  string
+		needError         bool
 	}{
 		{"Test for two positive numbers",
-			123,
-			24,
-			false,
-		},
+			"123",
+			"24",
+			false},
 
 		{"Test for two negative numbers",
-			-123,
-			-24,
-			true,
-		},
+			"-123",
+			"-24",
+			true},
 
 		{"Test for two zero numbers",
-			0,
-			0,
-			true,
-		},
+			"0",
+			"0",
+			true},
 
-		{"Test for negative input lenght",
-			-123,
-			24,
-			true,
-		},
+		{"Test for positive number and word",
+			"123",
+			"hello",
+			true},
 
-		{"Test for negative square",
-		123,
-		-24,
-		true,
-		},
-}
+		{"Test for two empty strings",
+			" ",
+			" ",
+			true},
+
+		{"Test for two numbers with separators",
+			"123.56",
+			"24.51",
+			true},
+
+		{"Test for two words",
+			"love",
+			"été",
+			true},
+
+		{"Test for two dots",
+			".",
+			".",
+			true},
+
+		{"Test for zero and one",
+			"1",
+			"0",
+			true},
+
+		{"Test for one negative and one positive number",
+			"-123",
+			"24",
+			true},
+	}
 
 	for _, testCase := range testCases {
 		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
-			if gotlenght, gotminSq, gotError := ValidateTheInput(testCase.inputLenght, testCase.inputMinSquare); testCase.needError != (gotError != nil) {
+			if gotlenght, gotminSq, gotError := Validatetheinput(testCase.inputLenght, testCase.inputMinSquare, r); testCase.needError != (gotError != nil) {
 				t.Errorf("for returned error: want %s but got %d, %d, %s", testCase.name, gotlenght, gotminSq, gotError)
 			}
 		})
 	}
 }
 
+
 func TestSquares(t *testing.T) {
 	var testCases = []struct {
 		name           string
-		inputLenght     int
-		inputMinSquare  int
+		lenght        int
+		minSq         int
 		expectedResult []int
 		needError      bool
 	}{
@@ -65,28 +87,31 @@ func TestSquares(t *testing.T) {
 			0,
 			0,
 			[]int{},
-			false,
-		},
+			true},
 
 		{"Test for getting the square for lenght=1, minSq=2",
 			1,
 			2,
 			[]int{4},
-			false,
-		},
+			true},
 
 		{"Test for getting the square for lenght=4, minSq=5",
 			4,
 			5,
 			[]int{9, 16, 25, 36},
-			false,
-		},
+			true},
+
+		{"Test for getting the square for lenght=4, minSq=5",
+			4,
+			0,
+			[]int{1, 4, 9, 16},
+			true},
 	}
 	for _, testCase := range testCases {
 		testCase := testCase
 		t.Run(testCase.name, func(t *testing.T) {
-			actualResult, err := GetSquares(testCase.inputLenght, testCase.inputMinSquare)
-			if err != nil {
+			actualResult, err := GetSquares(testCase.lenght, testCase.minSq)
+			if testCase.needError == (err != nil) {
 				t.Errorf("For returned error: want <nil> but got %v", err)
 			}
 			for i := range testCase.expectedResult {
@@ -98,7 +123,7 @@ func TestSquares(t *testing.T) {
 	}
 }
 
-func TestPrintWithCommas(t *testing.T) {
+func TestPrintingwithCommas(t *testing.T) {
 	var testCases = []struct {
 		name           string
 		inputData      []int
@@ -109,7 +134,7 @@ func TestPrintWithCommas(t *testing.T) {
 			[]int{1, 4, 9, 16},
 			"1, 4, 9, 16",
 			false,
-		},
+	},
 	}
 
 	for _, testCase := range testCases {

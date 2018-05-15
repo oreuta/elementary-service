@@ -75,18 +75,5 @@ Output vertices of triangle objects in descending order by their area.
 
 
 
-<<<<<<< HEAD
-1. _Task1_ - description
-2. _Task2_ - description
-3. _Task3_ - description
-4. ...
-5.
-6. _Task6_ - The objective is to build the sequence of natural digits given the length of the sequence and minimal value.
-
-Input data - the length itself and the value of the minimum (the sequence of squares (the meaning of each digit) shouldn't be less that this value).
-
-Output data - the string with the sequence, commas are to be used as separators.
-=======
->>>>>>> 18313a86f7bc812b614fd8d65c62a23caa52e06d
 
 Elementary-Service is deployed to [heroku](https://www.heroku.com/)
