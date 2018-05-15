@@ -7,12 +7,13 @@ import (
 	"github.com/oreuta/elementary-service/src/models/sequence"
 	"regexp"
 	"io/ioutil"
+	"fmt"
 )
 
 // `{"length": 5, "minSq": 10}`
 type inputData struct {
-	Length int
-	MinSq int
+	Length int `json:"length"`
+	MinSq int  `json:"minSq"`
 }
 
 // `{"sequence_of_natural_digits":[1, 4, 7]}`
@@ -26,12 +27,9 @@ func logError(err error) {
 	log.Printf("%s: ERROR %q", serviceName, err.Error())
 }
 
-
 var re = regexp.MustCompile("^[0-9]+$")
 
-
-
-// Handler is a REST wrapper for SquareRoot function
+// Handler is a REST wrapper for Sequence function
 func Handler(w http.ResponseWriter, r *http.Request) {
 	log.Printf("%s: start", serviceName)
 	defer log.Printf("%s: stop", serviceName)
@@ -52,7 +50,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-
+	fmt.Println(input.Length, input.MinSq)
 	arr, err := sequence.GetSquares(input.Length, input.MinSq)
 	if err != nil {
 		logError(err)
