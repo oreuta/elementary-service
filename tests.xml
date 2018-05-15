@@ -31,7 +31,23 @@ ok  	github.com/oreuta/elementary-service/src/models/fibo	(cached)	coverage: 97.
 PASS
 coverage: 88.9% of statements
 ok  	github.com/oreuta/elementary-service/src/models/luckyTickets	(cached)	coverage: 88.9% of statements
-FAIL	github.com/oreuta/elementary-service/src/models/palindrome [build failed]
+=== RUN   TestFindSubPalindromes
+=== RUN   TestFindSubPalindromes/no_error,_testing_'taat'
+=== RUN   TestFindSubPalindromes/error,_length_of_entered_string_is_0
+=== RUN   TestFindSubPalindromes/error,_length_of_entered_string_is_1
+=== RUN   TestFindSubPalindromes/error,_test_one_Chinese_symbol
+=== RUN   TestFindSubPalindromes/error,_test_two_Chinese_symbols
+=== RUN   TestFindSubPalindromes/no_error,_testing_'kayak'
+--- PASS: TestFindSubPalindromes (0.00s)
+    --- PASS: TestFindSubPalindromes/no_error,_testing_'taat' (0.00s)
+    --- PASS: TestFindSubPalindromes/error,_length_of_entered_string_is_0 (0.00s)
+    --- PASS: TestFindSubPalindromes/error,_length_of_entered_string_is_1 (0.00s)
+    --- PASS: TestFindSubPalindromes/error,_test_one_Chinese_symbol (0.00s)
+    --- PASS: TestFindSubPalindromes/error,_test_two_Chinese_symbols (0.00s)
+    --- PASS: TestFindSubPalindromes/no_error,_testing_'kayak' (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	github.com/oreuta/elementary-service/src/models/palindrome	(cached)	coverage: 100.0% of statements
 === RUN   TestValidationofInputData
 === RUN   TestValidationofInputData/Test_for_two_positive_numbers
 === RUN   TestValidationofInputData/Test_for_two_negative_numbers
