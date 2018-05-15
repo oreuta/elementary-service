@@ -13,7 +13,7 @@ func TestFindSubPalindromes(t *testing.T) {
 		{
 			name:           "no error, testing 'taat'",
 			input:          "taat",
-			expPalindromes: "taat aa ",
+			expPalindromes: "taat aa",
 			needError:      false,
 		},
 		{
@@ -37,7 +37,7 @@ func TestFindSubPalindromes(t *testing.T) {
 		{
 			name:           "no error, testing 'kayak'",
 			input:          "kayak",
-			expPalindromes:"kayak aya ",
+			expPalindromes:"kayak aya",
 			needError:      false,
 		},
 	}
@@ -50,7 +50,7 @@ func TestFindSubPalindromes(t *testing.T) {
 			}
 			for i := range testCase.expPalindromes {
 				if testCase.expPalindromes[i] != actPalindromes[i] {
-					t.Errorf("want %s but got %s", testCase.expPalindromes[i], actPalindromes[i])
+					t.Errorf("want %v but got %v", testCase.expPalindromes[i], actPalindromes[i])
 				}
 			}
 		})

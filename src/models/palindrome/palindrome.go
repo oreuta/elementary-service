@@ -17,7 +17,7 @@ func FindSubPalindromes(stringToExplore string) (resultString string, err error)
 	runedStr := []rune(stringToExplore)
 	for offset, _ := range stringToExplore {
 		for substringLength := 1; substringLength <= length-offset; substringLength++ {
-			substring := runedStr[offset : offset+substringLength]
+			substring := runedStr[offset: offset+substringLength]
 			if isPalindrome(substring) && len(substring) > 1 {
 				palindromeSubstrings = append(palindromeSubstrings, substring)
 			}
@@ -29,7 +29,14 @@ func FindSubPalindromes(stringToExplore string) (resultString string, err error)
 		}
 		resultString += " "
 	}
+
+	if len(resultString) == 0 {
+		return
+	}
+	resultRune := []rune (resultString)
+	resultString = string(resultRune[0:len(resultRune)-1])
 	return
+
 }
 
 func isPalindrome(stringToTest []rune) bool {
