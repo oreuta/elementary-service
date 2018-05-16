@@ -8,7 +8,6 @@ import (
 	"github.com/oreuta/elementary-service/src/services/fibo"
 	"github.com/oreuta/elementary-service/src/services/palindrome"
 	"github.com/oreuta/elementary-service/src/services/sequence"
-	"github.com/oreuta/elementary-service/src/services/luckyTickets"
 )
 
 //Router is a function that starts server and routes http requests
