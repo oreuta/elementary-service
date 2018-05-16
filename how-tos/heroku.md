@@ -15,9 +15,9 @@ Also, we need the next features:
 - [a free Heroku account](https://signup.heroku.com/ "a free Heroku account").
 - [the Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli "the Heroku CLI").
 
-####NOTICE 
+**NOTICE(!):** 
 Heroku Go support will be applied to applications only when the application has a file named Godeps/Godeps.json in the root directory. Even if an application has no dependencies, it must include a basic Godeps/Godeps.json file in order to be recognized as a Go application.
 
-##Prepare your app
+# Prepare your app
 The next steps you can do with it:
 https://devcenter.heroku.com/articles/getting-started-with-go#prepare-the-app
