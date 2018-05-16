@@ -18,9 +18,9 @@ technology, an architectural style and approach to communications often used in 
 - ***To find out more***
 ---------------------------
 
-A [link](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md).
-A [link](https://swagger.io/getting-started/).
-A [link](https://www.youtube.com/watch?v=xggucT_xl5U).
-A [link](https://http://editor.swagger.io/).
+API specification [link](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md).
+Official tutorial [link](https://swagger.io/getting-started/).
+Video [link](https://www.youtube.com/watch?v=xggucT_xl5U).
+Online editor [link](https://http://editor.swagger.io/).
 
 ------------
