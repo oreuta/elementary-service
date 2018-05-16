@@ -9,6 +9,7 @@ import (
 	"services/palindrome"
 	"services/sequence"
 	"os"
+	"services/luckyTickets"
 )
 
 //Router is a function that starts server and routes http requests
@@ -21,5 +22,6 @@ func Router() {
 	http.HandleFunc("/squarert", squarert.Handler)
 	http.HandleFunc("/sequence", sequence.Handler)
 	http.HandleFunc("/trianglesSort", trianglesSort.Handler)
+	http.HandleFunc("/luckiTickets", luckyTickets.Handler)
 	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
