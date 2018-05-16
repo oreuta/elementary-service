@@ -1,0 +1,133 @@
+?   	github.com/oreuta/elementary-service/src	[no test files]
+=== RUN   TestFibonacci
+=== RUN   TestFibonacci/no_error,_2_positive_numbers
+=== RUN   TestFibonacci/error,_positive_numbers_+_1_negative
+=== RUN   TestFibonacci/error,_no_numbers
+=== RUN   TestFibonacci/error,_to_much_numbers
+=== RUN   TestFibonacci/error,_first_number_greater_than_second
+=== RUN   TestFibonacci/error,_lenght_of_numbers_<_1
+=== RUN   TestFibonacci/no_error,_lenght_specified
+--- PASS: TestFibonacci (0.00s)
+    --- PASS: TestFibonacci/no_error,_2_positive_numbers (0.00s)
+    --- PASS: TestFibonacci/error,_positive_numbers_+_1_negative (0.00s)
+    --- PASS: TestFibonacci/error,_no_numbers (0.00s)
+    --- PASS: TestFibonacci/error,_to_much_numbers (0.00s)
+    --- PASS: TestFibonacci/error,_first_number_greater_than_second (0.00s)
+    --- PASS: TestFibonacci/error,_lenght_of_numbers_<_1 (0.00s)
+    --- PASS: TestFibonacci/no_error,_lenght_specified (0.00s)
+PASS
+coverage: 97.7% of statements
+ok  	github.com/oreuta/elementary-service/src/models/fibo	(cached)	coverage: 97.7% of statements
+=== RUN   TestGetLuckyTickets
+=== RUN   TestGetLuckyTickets/no_error
+=== RUN   TestGetLuckyTickets/numbers_must_be_positive
+=== RUN   TestGetLuckyTickets/min_must_be_lower_than_max_and_their_length_must_be_6
+=== RUN   TestGetLuckyTickets/their_length_must_be_6
+--- PASS: TestGetLuckyTickets (0.00s)
+    --- PASS: TestGetLuckyTickets/no_error (0.00s)
+    --- PASS: TestGetLuckyTickets/numbers_must_be_positive (0.00s)
+    --- PASS: TestGetLuckyTickets/min_must_be_lower_than_max_and_their_length_must_be_6 (0.00s)
+    --- PASS: TestGetLuckyTickets/their_length_must_be_6 (0.00s)
+PASS
+coverage: 88.9% of statements
+ok  	github.com/oreuta/elementary-service/src/models/luckyTickets	(cached)	coverage: 88.9% of statements
+=== RUN   TestFindSubPalindromes
+=== RUN   TestFindSubPalindromes/no_error,_testing_'taat'
+=== RUN   TestFindSubPalindromes/error,_length_of_entered_string_is_0
+=== RUN   TestFindSubPalindromes/error,_length_of_entered_string_is_1
+=== RUN   TestFindSubPalindromes/error,_test_one_Chinese_symbol
+=== RUN   TestFindSubPalindromes/error,_test_two_Chinese_symbols
+=== RUN   TestFindSubPalindromes/no_error,_testing_'kayak'
+--- PASS: TestFindSubPalindromes (0.00s)
+    --- PASS: TestFindSubPalindromes/no_error,_testing_'taat' (0.00s)
+    --- PASS: TestFindSubPalindromes/error,_length_of_entered_string_is_0 (0.00s)
+    --- PASS: TestFindSubPalindromes/error,_length_of_entered_string_is_1 (0.00s)
+    --- PASS: TestFindSubPalindromes/error,_test_one_Chinese_symbol (0.00s)
+    --- PASS: TestFindSubPalindromes/error,_test_two_Chinese_symbols (0.00s)
+    --- PASS: TestFindSubPalindromes/no_error,_testing_'kayak' (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	github.com/oreuta/elementary-service/src/models/palindrome	(cached)	coverage: 100.0% of statements
+=== RUN   TestValidationofInputData
+=== RUN   TestValidationofInputData/Test_for_two_positive_numbers
+=== RUN   TestValidationofInputData/Test_for_two_negative_numbers
+=== RUN   TestValidationofInputData/Test_for_two_zero_numbers
+=== RUN   TestValidationofInputData/Test_for_positive_number_and_word
+=== RUN   TestValidationofInputData/Test_for_two_empty_strings
+=== RUN   TestValidationofInputData/Test_for_two_numbers_with_separators
+=== RUN   TestValidationofInputData/Test_for_two_words
+=== RUN   TestValidationofInputData/Test_for_two_dots
+=== RUN   TestValidationofInputData/Test_for_zero_and_one
+=== RUN   TestValidationofInputData/Test_for_one_negative_and_one_positive_number
+--- PASS: TestValidationofInputData (0.00s)
+    --- PASS: TestValidationofInputData/Test_for_two_positive_numbers (0.00s)
+    --- PASS: TestValidationofInputData/Test_for_two_negative_numbers (0.00s)
+    --- PASS: TestValidationofInputData/Test_for_two_zero_numbers (0.00s)
+    --- PASS: TestValidationofInputData/Test_for_positive_number_and_word (0.00s)
+    --- PASS: TestValidationofInputData/Test_for_two_empty_strings (0.00s)
+    --- PASS: TestValidationofInputData/Test_for_two_numbers_with_separators (0.00s)
+    --- PASS: TestValidationofInputData/Test_for_two_words (0.00s)
+    --- PASS: TestValidationofInputData/Test_for_two_dots (0.00s)
+    --- PASS: TestValidationofInputData/Test_for_zero_and_one (0.00s)
+    --- PASS: TestValidationofInputData/Test_for_one_negative_and_one_positive_number (0.00s)
+=== RUN   TestSquares
+=== RUN   TestSquares/Test_for_dealing_with_0
+=== RUN   TestSquares/Test_for_getting_the_square_for_lenght=1,_minSq=2
+=== RUN   TestSquares/Test_for_getting_the_square_for_lenght=4,_minSq=5
+=== RUN   TestSquares/Test_for_getting_the_square_for_lenght=4,_minSq=5#01
+--- PASS: TestSquares (0.00s)
+    --- PASS: TestSquares/Test_for_dealing_with_0 (0.00s)
+    --- PASS: TestSquares/Test_for_getting_the_square_for_lenght=1,_minSq=2 (0.00s)
+    --- PASS: TestSquares/Test_for_getting_the_square_for_lenght=4,_minSq=5 (0.00s)
+    --- PASS: TestSquares/Test_for_getting_the_square_for_lenght=4,_minSq=5#01 (0.00s)
+=== RUN   TestPrintingwithCommas
+=== RUN   TestPrintingwithCommas/Test_for_printing_with_commas
+--- PASS: TestPrintingwithCommas (0.00s)
+    --- PASS: TestPrintingwithCommas/Test_for_printing_with_commas (0.00s)
+PASS
+coverage: 90.9% of statements
+ok  	github.com/oreuta/elementary-service/src/models/sequence	(cached)	coverage: 90.9% of statements
+=== RUN   TestSquareRoot
+=== RUN   TestSquareRoot/no_error,_3_positive_numbers
+=== RUN   TestSquareRoot/error,_3_positive_numbers_+_1_negative
+=== RUN   TestSquareRoot/no_error,_no_numbers
+--- PASS: TestSquareRoot (0.00s)
+    --- PASS: TestSquareRoot/no_error,_3_positive_numbers (0.00s)
+    --- PASS: TestSquareRoot/error,_3_positive_numbers_+_1_negative (0.00s)
+    --- PASS: TestSquareRoot/no_error,_no_numbers (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	github.com/oreuta/elementary-service/src/models/squarert	(cached)	coverage: 100.0% of statements
+=== RUN   TestTrianglesSquareSort
+=== RUN   TestTrianglesSquareSort/error,_3_triangles,_japaneese_symbol_in_vertices_names
+=== RUN   TestTrianglesSquareSort/error,_3_triangles,_names_of_vertices_dont_fit_its_values
+=== RUN   TestTrianglesSquareSort/error,_3_triangles,_names_of_vertices_dont_fit_its_values,_C_first_vertice
+=== RUN   TestTrianglesSquareSort/error,_3_triangles,_names_of_vertices_dont_fit_its_values,_C_first_vertice#01
+=== RUN   TestTrianglesSquareSort/error,_3_triangles,_names_of_vertices_dont_fit_its_values,_A_first_vertice
+=== RUN   TestTrianglesSquareSort/no_error,_5_triangles,4_of_them_have_same_names_and_values
+=== RUN   TestTrianglesSquareSort/no_error,_2_triangles
+=== RUN   TestTrianglesSquareSort/no_error,_3_triangles
+=== RUN   TestTrianglesSquareSort/error,_3_triangles_and_some_vertices_are_zero
+=== RUN   TestTrianglesSquareSort/error,_3_triangles,_one_side_is_negative
+=== RUN   TestTrianglesSquareSort/error,_2_triangles,_2nd_have_wrong_triangle_sizes
+=== RUN   TestTrianglesSquareSort/error,_empty_slice
+=== RUN   TestTrianglesSquareSort/error,_single_triangle
+--- PASS: TestTrianglesSquareSort (0.00s)
+    --- PASS: TestTrianglesSquareSort/error,_3_triangles,_japaneese_symbol_in_vertices_names (0.00s)
+    --- PASS: TestTrianglesSquareSort/error,_3_triangles,_names_of_vertices_dont_fit_its_values (0.00s)
+    --- PASS: TestTrianglesSquareSort/error,_3_triangles,_names_of_vertices_dont_fit_its_values,_C_first_vertice (0.00s)
+    --- PASS: TestTrianglesSquareSort/error,_3_triangles,_names_of_vertices_dont_fit_its_values,_C_first_vertice#01 (0.00s)
+    --- PASS: TestTrianglesSquareSort/error,_3_triangles,_names_of_vertices_dont_fit_its_values,_A_first_vertice (0.00s)
+    --- PASS: TestTrianglesSquareSort/no_error,_5_triangles,4_of_them_have_same_names_and_values (0.00s)
+    --- PASS: TestTrianglesSquareSort/no_error,_2_triangles (0.00s)
+    --- PASS: TestTrianglesSquareSort/no_error,_3_triangles (0.00s)
+    --- PASS: TestTrianglesSquareSort/error,_3_triangles_and_some_vertices_are_zero (0.00s)
+    --- PASS: TestTrianglesSquareSort/error,_3_triangles,_one_side_is_negative (0.00s)
+    --- PASS: TestTrianglesSquareSort/error,_2_triangles,_2nd_have_wrong_triangle_sizes (0.00s)
+    --- PASS: TestTrianglesSquareSort/error,_empty_slice (0.00s)
+    --- PASS: TestTrianglesSquareSort/error,_single_triangle (0.00s)
+PASS
+coverage: 93.0% of statements
+ok  	github.com/oreuta/elementary-service/src/models/trianglesSort	(cached)	coverage: 93.0% of statements
+?   	github.com/oreuta/elementary-service/src/services	[no test files]
+?   	github.com/oreuta/elementary-service/src/services/fibo	[no test files]

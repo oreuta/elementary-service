@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/.idea/go-getting-started.iml" filepath="$PROJECT_DIR$/.idea/go-getting-started.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/.idea/elementary-service.iml" filepath="$PROJECT_DIR$/.idea/elementary-service.iml" />
+>>>>>>> e196e071311a4665f7277bf6c1efe6c77f61241d
     </modules>
   </component>
 </project>

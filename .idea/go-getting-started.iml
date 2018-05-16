@@ -2,6 +2,10 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$" />
+<<<<<<< HEAD
+=======
+    <content url="file://$MODULE_DIR$/src/vendor/github.com/fibo" />
+>>>>>>> e196e071311a4665f7277bf6c1efe6c77f61241d
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
