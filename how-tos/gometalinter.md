@@ -1,7 +1,6 @@
-    Go Meta Linter is an utilize  which can parallel execute wholly, 
-    all kinds of Linter for the Go language
+    Go Meta Linter is an utilize  which can parallel execute wholly, all kinds of Linter for the Go language
 
-####Installing
+#### Installing
 There are two options for installing gometalinter.
 
 1. Install a stable version, eg.  `go get -u gopkg.in/alecthomas/gometalinter.v2. `
