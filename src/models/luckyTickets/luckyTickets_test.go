@@ -9,37 +9,37 @@ func TestGetLuckyTickets(t *testing.T){
 	testCases := []struct{
 		name string
 		needError bool
-		inputData taskContext
+		inputData TaskContext
 		expected Winner
 	}{
 		{
 			name: "no error",
 			needError: false,
-			inputData: taskContext{100000, 100010},
+			inputData: TaskContext{100000, 100010},
 			expected: Winner {1, 2, 0},
 		},
 		{
 			name: "numbers must be positive",
 			needError: true,
-			inputData: taskContext{-999999, 100000},
+			inputData: TaskContext{-999999, 100000},
 			expected: Winner {0, 0, 0},
 		},
 		{
 			name: "min must be lower than max and their length must be 6",
 			needError: true,
-			inputData: taskContext{75, 50},
+			inputData: TaskContext{75, 50},
 			expected: Winner {0, 0, 0},
 		},
 		{
 			name: "their length must be 6",
 			needError: true,
-			inputData: taskContext{1234567, 12345678},
+			inputData: TaskContext{1234567, 12345678},
 			expected: Winner {0, 0, 0},
 		},
 		{
 			name: "their length must be 6",
-			needError: true,
-			inputData: taskContext{100000, 100030},
+			needError: false,
+			inputData: TaskContext{100000, 100030},
 			expected: Winner {3, 2, 2},
 		},
 	}
