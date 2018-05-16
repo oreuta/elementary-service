@@ -13,7 +13,7 @@ produces:
   - application/json
 paths:
   /localhost:8080/sequence:
-    get:
+    post:
       summary: Everything about natural digits sequences
       description: This endpoint returns the sequence of natural digits.
       parameters:
@@ -38,7 +38,7 @@ paths:
             $ref: '#/definitions/Error'
 
   /localhost:8080/subpalindromes:
-    get:
+    post:
       summary: Everything about palindromes
       description: This endpoint returns all palindromes found in the initial string
       parameters:
@@ -56,7 +56,7 @@ paths:
           description: Unexpected error
 
   /localhost:8080/fibo:
-    get:
+    post:
       summary: Fibonacci Sequence
       description: Builds a sequence of Fibonacci number
       parameters:
@@ -75,8 +75,8 @@ paths:
           schema:
             $ref: '#/definitions/Error'
 
-  /localhost:8080/LuckyTickets:
-    get:
+  /localhost:8080/luckyTickets:
+    post:
       summary: counter of Lucky Ticket' numbers
       description: Checks the quantity of lucky tickets found unsing two methods (valid for 6 digit numbers)
       parameters:
@@ -99,7 +99,7 @@ paths:
             $ref: '#/definitions/Error'
 
   /localhost:8080/trianglesSort:
-    get:
+    post:
       summary: Sort of triangles
       description: Is used to sort the triangles in descending order
       parameters:
