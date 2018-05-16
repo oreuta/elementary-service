@@ -77,9 +77,8 @@ func (t *Triangle) validateNamesFitNumbers() (flag bool) {
 		return true
 	} else if t.validateNamedVerticeC(r) {
 		return true
-	} else {
-		return
 	}
+	return
 }
 
 func (t *Triangle) validateNamedVerticeA(r []rune) (flag bool) {
@@ -91,9 +90,8 @@ func (t *Triangle) validateNamedVerticeA(r []rune) (flag bool) {
 		} else {
 			return
 		}
-	}else {
-		return
 	}
+	return
 }
 
 func (t *Triangle) validateNamedVerticeB(r []rune) (flag bool) {
@@ -105,9 +103,8 @@ func (t *Triangle) validateNamedVerticeB(r []rune) (flag bool) {
 		} else {
 			return
 		}
-	}else {
-		return
 	}
+	return
 }
 
 func (t *Triangle) validateNamedVerticeC(r []rune) (flag bool) {
