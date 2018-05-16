@@ -17,7 +17,8 @@ Output all Fibonacci numbers that satisfy passed to the function restriction : a
 ------------
  There are 2 ways to calculate if the ticket is lucky:
  
-  *Simple one* - if we have a ticket with six-figure number and the sum of the first three digits is equal to the sum of the last three, then this ticket is considered to be lucky.
+  *Simple one* - if we have a ticket with six-figure number and the sum of the first three digits is equal to the sum of
+   the last three, then this ticket is considered to be lucky.
   
   *Hard one* - if the sum of even numbers is equal to the sum of odd numbers,
   then the ticket is considered to be lucky.
@@ -32,7 +33,9 @@ Output all Fibonacci numbers that satisfy passed to the function restriction : a
 
 -  **Palindrome**
 
-Check whether the string or part of it is a palindrome. For example, the string panama is not a palindrome, but its parts "ana" and "ama" is. Strings smaller than 2 symbols are not palindrome.
+Check whether the string or part of it is a palindrome. For example, the string panama is not a palindrome, but its parts
+ "ana" and "ama" is. Strings smaller than 2 symbols are not palindrome.
+ 
   **Input parameters:** string
   
   **Output:** string with found palindromes
