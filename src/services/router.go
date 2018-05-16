@@ -8,6 +8,7 @@ import (
 	"github.com/oreuta/elementary-service/src/services/fibo"
 	"github.com/oreuta/elementary-service/src/services/palindrome"
 	"github.com/oreuta/elementary-service/src/services/sequence"
+	"github.com/oreuta/elementary-service/src/services/luckyTickets"
 )
 
 //Router is a function that starts server and routes http requests
@@ -19,5 +20,6 @@ func Router() {
 	http.HandleFunc("/squarert", squarert.Handler)
 	http.HandleFunc("/sequence", sequence.Handler)
 	http.HandleFunc("/trianglesSort", trianglesSort.Handler)
+	http.HandleFunc("/luckyTickets", trianglesSort.Handler)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
