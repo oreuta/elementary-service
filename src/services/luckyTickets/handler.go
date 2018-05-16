@@ -6,7 +6,7 @@ import (
 	"log"
 	"net/http"
 
-	"models/luckyTickets"
+	"github.com/oreuta/elementary-service/src/models/luckyTickets"
 )
 
 type Winner struct {
