@@ -1,7 +1,7 @@
 # this is a demonstration of an API spec in YAML
 swagger: '2.0'
 info:
-  title: GoDev elementary service API
+  title: Go.Dev elementary service API
   description: This is an API that fully corresponds with features states in the swagger specification 2.0
   version: "1.0.0"
 # the domain of the service
