@@ -49,6 +49,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	}
 	log.Printf("%s: output data %v", serviceName, Winner)
 
+
 	outputJSON, err := json.Marshal(Winner)
 	if err != nil {
 		logError(err)
