@@ -1,0 +1,162 @@
+# this is a demonstration of an API spec in YAML
+swagger: '2.0'
+info:
+  title: GoDev elementary service API
+  description: This is an API that fully corresponds with features states in the swagger specification 2.0
+  version: "1.0.0"
+# the domain of the service
+host: 8080.api
+# array of all schemes that your API supports
+schemes:
+  - http
+produces:
+  - application/json
+paths:
+  /localhost:8080/sequence:
+    get:
+      summary: Everything about natural digits sequences
+      description: This endpoint returns the sequence of natural digits.
+      parameters:
+        - name: inputLenght
+          in: query
+          description: The lenght of the prospective sequence of digits
+          required: true
+          type: number
+        - name: inputMinSquare
+          in: query
+          description: Each digit in obtained sequence should not be less than MinSquare
+          required: true
+          type: number
+      tags:
+        - Sequence
+      responses:
+        200:
+          description: A sequence of natural digits, separated by commas
+        400:
+          description: Wrong input data
+          schema:
+            $ref: '#/definitions/Error'
+
+  /localhost:8080/subpalindromes:
+    get:
+      summary: Everything about palindromes
+      description: This endpoint returns all palindromes found in the initial string
+      parameters:
+        - name: stringToExplore
+          in: query
+          description: Initial string with potential palindrome
+          required: true
+          type: string
+      tags:
+        - Palindromes
+      responses:
+        200:
+          description: The palindromes and subpalindromes found within the string
+        default:
+          description: Unexpected error
+
+  /localhost:8080/fibo:
+    get:
+      summary: Fibonacci Sequence
+      description: Builds a sequence of Fibonacci number
+      parameters:
+        - name: numberToProceed
+          in: query
+          description: initial data (index)
+          required: true
+          type: number
+      tags:
+        - Fibonacci
+      responses:
+        200:
+          description: Returns the slice of Fibonacci numbers depending on the initial data
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
+  /localhost:8080/LuckyTickets:
+    get:
+      summary: counter of Lucky Ticket' numbers
+      description: Checks the quantity of lucky tickets found unsing two methods (valid for 6 digit numbers)
+      parameters:
+        name: InputStruct
+        description: "Contains initial data"
+        required: true
+        type: array
+        items:
+         type: integer
+        schema:
+         $ref: '#/definitions/inputStruct'
+      tags:
+        - Lucky Tickets
+      responses:
+        200:
+          description: Return of Winner structure
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
+  /localhost:8080/trianglesSort:
+    get:
+      summary: Sort of triangles
+      description: Is used to sort the triangles in descending order
+      parameters:
+        name: TrianglesBody
+        description: "The array of objects"
+        required: true
+        schema:
+         $ref: '#/definitions/TrianglesBody'
+      tags:
+        - Sorted triangles
+      responses:
+        200:
+          description: Return the array of triangles names(vertices) in descending order
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
+definitions:
+  Error:
+    type: object
+    required:
+      - message
+    properties:
+      message:
+        type: string
+      id:
+        type: string
+
+  inputStruct:
+    type: object
+    description: InputStruct contains the info about the object (min, max fields)
+    required:
+      - min
+      - max
+    properties:
+      min:
+        type: integer
+      max:
+        type: integer
+
+  TrianglesBody:
+    type: array
+    description: TriangleBody reflects side's length, title of triangle and its vertices
+    items:
+       type: object
+    properties:
+       Vertices:
+        type: string
+       sideA:
+        type: number
+       sideB:
+        type: number
+       sideC:
+        type: number
+
+
+
+
+

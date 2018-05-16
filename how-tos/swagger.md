@@ -15,7 +15,7 @@ A RESTful API is an application program interface (API) that uses HTTP requests 
 A RESTful API -- also referred to as a RESTful web service -- is based on representational state transfer (REST)
 technology, an architectural style and approach to communications often used in web services development.
 
-- *** To find out more ***
+- ***To find out more***
 ---------------------------
 
 A [link](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md).
