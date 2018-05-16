@@ -34,8 +34,8 @@ func getResult(workMode int, numbersToProceed []int) (result []int) {
 		tempNumber         int
 	)
 
-	if workMode == 2 {
-
+	switch workMode {
+	case 2:
 		for !rangeParsed {
 			fiboNumberTemp = getFiboNumberByIndex(tempNumber)
 			if numbersToProceed[0] <= fiboNumberTemp && fiboNumberTemp <= numbersToProceed[1] {
@@ -48,8 +48,7 @@ func getResult(workMode int, numbersToProceed []int) (result []int) {
 		}
 		return fiboNumbersProceed // ------->  return sequence of fibnumbers in requested range
 
-	} else if workMode == 1 {
-
+	case 1:
 		for !rangeParsed {
 			fiboNumberTemp = getFiboNumberByIndex(tempNumber)
 			if numbersToProceed[0] == getLenghtOfNumber(fiboNumberTemp) {
@@ -68,7 +67,7 @@ func getResult(workMode int, numbersToProceed []int) (result []int) {
 // Fibo returns a slice of Fibonacci numbers depending to argument
 func Fibo(numbers []int) (fiboNumbers []int, err error) {
 
-	workMode := 0 // 1 - requested lenght, 2- requested range
+	var workMode int // 1 - requested lenght, 2- requested range
 
 	for i := 0; i < len(numbers); i++ {
 		if numbers[i] < 0 {
