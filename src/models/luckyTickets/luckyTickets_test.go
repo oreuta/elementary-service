@@ -36,6 +36,12 @@ func TestGetLuckyTickets(t *testing.T){
 			inputData: taskContext{1234567, 12345678},
 			expected: Winner {0, 0, 0},
 		},
+		{
+			name: "their length must be 6",
+			needError: true,
+			inputData: taskContext{100000, 100030},
+			expected: Winner {3, 2, 2},
+		},
 	}
 
 	for _, testCase := range testCases{
