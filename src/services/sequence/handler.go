@@ -11,8 +11,8 @@ import (
 
 // `{"length": 5, "minSq": 10}`
 type inputData struct {
-	Length int
-	MinSq int
+	Length int `json:"length"`
+	MinSq int  `json:"minSq"`
 }
 
 // `{"sequence_of_natural_digits":[1, 4, 7]}`
@@ -26,10 +26,7 @@ func logError(err error) {
 	log.Printf("%s: ERROR %q", serviceName, err.Error())
 }
 
-
 var re = regexp.MustCompile("^[0-9]+$")
-
-
 
 // Handler is a REST wrapper for SquareRoot function
 func Handler(w http.ResponseWriter, r *http.Request) {
