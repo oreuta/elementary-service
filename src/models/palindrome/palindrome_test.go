@@ -50,7 +50,7 @@ func TestFindSubPalindromes(t *testing.T) {
 			}
 			for i := range testCase.expPalindromes {
 				if testCase.expPalindromes[i] != actPalindromes[i] {
-					t.Errorf("want %s but got %s", testCase.expPalindromes[i], actPalindromes[i])
+					t.Errorf("want %q but got %q", testCase.expPalindromes[i], actPalindromes[i])
 				}
 			}
 		})
