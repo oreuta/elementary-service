@@ -2,20 +2,22 @@
 swagger: '2.0'
 info:
   title: Go.Dev elementary service API
-  description: This is an API that fully corresponds with features states in the swagger specification 2.0
+  description: This is an API that fully corresponds with features stated in the swagger/openAPI specification 2.0
   version: "1.0.0"
 # the domain of the service
 host: 8080.api
 # array of all schemes that your API supports
 schemes:
   - http
+consumes:
+   - application/json
 produces:
-  - application/json
+   - application/json
 paths:
   /localhost:8080/sequence:
     post:
       summary: Everything about natural digits sequences
-      description: This endpoint returns the sequence of natural digits.
+      description: This endpoint returns the sequence of natural digits with given parameters.
       parameters:
         - name: inputLenght
           in: query
@@ -77,15 +79,13 @@ paths:
 
   /localhost:8080/luckyTickets:
     post:
-      summary: counter of Lucky Ticket' numbers
-      description: Checks the quantity of lucky tickets found unsing two methods (valid for 6 digit numbers)
+      summary: counter of Lucky Ticket numbers
+      description: Checks the quantity of lucky tickets found using two methods (valid for 6 digit numbers)
       parameters:
+      - in: body
         name: InputStruct
         description: "Contains initial data"
         required: true
-        type: array
-        items:
-         type: integer
         schema:
          $ref: '#/definitions/inputStruct'
       tags:
@@ -103,6 +103,7 @@ paths:
       summary: Sort of triangles
       description: Is used to sort the triangles in descending order
       parameters:
+      - in: body
         name: TrianglesBody
         description: "The array of objects"
         required: true
@@ -112,7 +113,7 @@ paths:
         - Sorted triangles
       responses:
         200:
-          description: Return the array of triangles names(vertices) in descending order
+          description: Return the array of triangle in descending order
         default:
           description: Unexpected error
           schema:
