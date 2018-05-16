@@ -1,0 +1,4 @@
+package: github.com/oreuta/elementary-service/src
+import:
+- package: gopkg.in/alecthomas/gometalinter.v2
+  version: v2.0.5

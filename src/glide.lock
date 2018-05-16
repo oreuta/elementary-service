@@ -1,0 +1,6 @@
+hash: 3bc37908b6d05cb2cca65ff70375a04c8ce1061c909b36ff16de349fc1808633
+updated: 2018-05-16T14:24:24.776204629Z
+imports:
+- name: gopkg.in/alecthomas/gometalinter.v2
+  version: 46cc1ea3778b247666c2949669a3333c532fa9c6
+testImports: []
