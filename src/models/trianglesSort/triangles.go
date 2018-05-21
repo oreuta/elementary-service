@@ -24,6 +24,7 @@ type Triangle struct {
 
 var regex = regexp.MustCompile(`^[A-C]{3}$`)
 
+
 //TrianglesSquareSort is a function that sorts triangles slice by single triangle area. Returns sorted slice and error
 func TrianglesSquareSort(trianglesToSortSlice []Triangle) ([]Triangle, error) {
 	err := validateTriangles(trianglesToSortSlice)

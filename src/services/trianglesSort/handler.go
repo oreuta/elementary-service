@@ -32,6 +32,8 @@ type TrianglesBody struct {
 	Triangles []trianglesSort.Triangle `json:"triangles"`
 }
 
+var trianglesSquare = trianglesSort.TrianglesSquareSort
+
 const serviceName = "TriangleSort"
 
 func logError(err error) {
@@ -56,7 +58,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	outputData, err := trianglesSort.TrianglesSquareSort(trianglesToSort.Triangles)
+	outputData, err := trianglesSquare(trianglesToSort.Triangles)
 	if err != nil {
 		logError(err)
 		w.WriteHeader(http.StatusBadRequest)
@@ -74,12 +76,12 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	w.Header().Add("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
 	_, err = w.Write(outputJSON)
 	if err != nil {
 		logError(err)
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
+	w.Header().Add("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
 }
