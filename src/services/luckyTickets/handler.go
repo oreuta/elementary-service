@@ -20,6 +20,14 @@ func logError(err error) {
 	log.Printf("%s: ERROR %q", serviceName, err.Error())
 }
 
+
+
+func MockGetLuckyTickets(obj *luckyTickets.TaskContext) (w Winner, err error){
+	return
+}
+
+var Target = MockGetLuckyTickets
+
 // Handler is a REST wrapper for LuckyTickets-function
 func Handler(w http.ResponseWriter, r *http.Request) {
 	log.Printf("%s: start", serviceName)
@@ -41,7 +49,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	Winner, err := luckyTickets.GetLuckyTickets(numbers)
+	Winner, err := Target(numbers)
 	if err != nil {
 		logError(err)
 		w.WriteHeader(http.StatusBadRequest)

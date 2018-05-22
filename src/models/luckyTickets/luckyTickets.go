@@ -4,6 +4,7 @@ import (
 	"errors"
 )
 
+
 func validate(obj *TaskContext) (err error){
 	if (obj.Min - 99999) < 0 || (obj.Max - 99999) < 0 || obj.Min > obj.Max || obj.Min > 999999 || obj.Max > 999999{
 		return errors.New("incorrect data")
