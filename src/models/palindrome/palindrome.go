@@ -2,16 +2,29 @@ package palindrome
 
 import (
 	"errors"
-	"strings"
+	"bytes"
 )
 
-// FindSubPalindromes returns a string of all subpalindromes of its argument.
-func FindSubPalindromes(stringToExplore string) (resultString string, err error) {
-	stringToExplore = strings.Replace(stringToExplore, " ", "", -1)
+
+
+
+var FindSubPalindromes = findSubPalindromes
+
+//TestMockHandler() is a Mock function for findSubPalindromes function
+func TestMockHandler() {
+	FindSubPalindromes = func( s string) ([]string, error) {
+		return []string{s}, nil
+	}
+}
+
+// findSubPalindromes returns a string of all subpalindromes of its argument.
+func findSubPalindromes(stringToExplore string) (resultString []string, err error) {
+	var s string
+	var bs bytes.Buffer
 	var palindromeSubstrings [][]rune
 	err = validate(stringToExplore)
 	if err != nil {
-		return stringToExplore, err
+		return resultString, err
 	}
 	length := len([]rune(stringToExplore))
 	runedStr := []rune(stringToExplore)
@@ -25,18 +38,17 @@ func FindSubPalindromes(stringToExplore string) (resultString string, err error)
 	}
 	for j := range palindromeSubstrings {
 		for i := range palindromeSubstrings[j] {
-			resultString += string(palindromeSubstrings[j][i])
+			bs.WriteString(string(palindromeSubstrings[j][i]))
 		}
-		resultString += " "
+		s = bs.String()
+		resultString = append(resultString, s)
+		bs.Reset()
+		
 	}
-
 	if len(resultString) == 0 {
 		return
 	}
-	resultRune := []rune (resultString)
-	resultString = string(resultRune[0:len(resultRune)-1])
 	return
-
 }
 
 func isPalindrome(stringToTest []rune) bool {
@@ -51,9 +63,11 @@ func isPalindrome(stringToTest []rune) bool {
 	}
 	return true
 }
-func validate(stringToExplore string) (err error) {
+func validate(stringToExplore string) (error) {
 	if len([]rune(stringToExplore)) < 2 {
-		return errors.New("need to enter at least 2 symbols")
+		return  errors.New("need to enter at least 2 symbols")
 	}
 	return nil
 }
+
+

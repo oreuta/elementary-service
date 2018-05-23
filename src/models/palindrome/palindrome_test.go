@@ -7,13 +7,13 @@ func TestFindSubPalindromes(t *testing.T) {
 	testCases := []struct {
 		name           string
 		input          string
-		expPalindromes string
+		expPalindromes []string
 		needError      bool
 	}{
 		{
 			name:           "no error, testing 'taat'",
 			input:          "taat",
-			expPalindromes: "taat aa",
+			expPalindromes: []string {"taat", "aa"},
 			needError:      false,
 		},
 		{
@@ -37,7 +37,7 @@ func TestFindSubPalindromes(t *testing.T) {
 		{
 			name:           "no error, testing 'kayak'",
 			input:          "kayak",
-			expPalindromes:"kayak aya",
+			expPalindromes: []string {"kayak" , "aya"},
 			needError:      false,
 		},
 	}

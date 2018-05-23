@@ -1,20 +1,20 @@
 package palindrome
+
 import (
 	"encoding/json"
 	"log"
 	"net/http"
 	"io/ioutil"
-	palindrome2 "github.com/oreuta/elementary-service/src/models/palindrome"
+	"github.com/oreuta/elementary-service/src/models/palindrome"
+	"time"
 )
-
 
 type inputString struct {
 	InputString string
 }
 
-
 type outputStrings struct {
-	SubPalindromes string `json:"sub_palindromes"`
+	SubPalindromes []string `json:"sub_palindromes"`
 }
 
 const serviceName = "SubPalindromes"
@@ -25,16 +25,15 @@ func logError(err error) {
 
 // Handler is a REST wrapper for SubPalindromes function
 func Handler(w http.ResponseWriter, r *http.Request) {
-	log.Printf("%s: start", serviceName)
-	defer log.Printf("%s: stop", serviceName)
+	//log.Printf("%s: start", serviceName)
+	//defer log.Printf("%s: stop", serviceName)
 
 	body, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
-	 defer r.Body.Close()
-
+	defer r.Body.Close()
 
 	log.Printf("%s: input data %s", serviceName, body)
 	strings := inputString{}
@@ -45,7 +44,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	outputData, err := palindrome2.FindSubPalindromes(strings.InputString)
+	outputData, err := palindrome.FindSubPalindromes(strings.InputString)
 	if err != nil {
 		logError(err)
 		w.WriteHeader(http.StatusBadRequest)
@@ -72,4 +71,13 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		logError(err)
 		w.WriteHeader(http.StatusInternalServerError)
 	}
+}
+
+func WrappedLogHandler(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+
+		log.Printf("Start time of palindrome handler is %s s", time.Now().Round(time.Nanosecond).Format("15:04:05.999999999"))
+		Handler(w, r)
+		log.Printf("Palindrome handler has finished his work at %s s", time.Now().Round(time.Nanosecond).Format("15:04:05.999999999"))
+	})
 }
