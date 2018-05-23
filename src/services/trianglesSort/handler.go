@@ -32,6 +32,7 @@ type TrianglesBody struct {
 	Triangles []trianglesSort.Triangle `json:"triangles"`
 }
 
+//trianglesSquare variable is a variable that is used for testing (mock)
 var trianglesSquare = trianglesSort.TrianglesSquareSort
 
 const serviceName = "TriangleSort"
@@ -39,6 +40,8 @@ const serviceName = "TriangleSort"
 func logError(err error) {
 	log.Printf("%s: ERROR %q", serviceName, err.Error())
 }
+
+
 
 //Handler is a REST wrapper for TrianglesSort function
 func Handler(w http.ResponseWriter, r *http.Request) {
