@@ -28,8 +28,10 @@ func Router() {
 
 func handlerLogWrapper(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		log.Printf("Executing trianglesSquareSort handler, start time: %v\n", time.Now().Nanosecond())
+		log.Println("Executing trianglesSquareSort handler")
+		startTime := time.Now()
 		next.ServeHTTP(w, r)
-		log.Printf("Executing of the trianglesSquareSort handler has finished, end time: %v\n", time.Now().Nanosecond())
+		endTime:=time.Now()
+		log.Printf("Executing of the trianglesSquareSort handler has finished, exec time: %v\n", endTime.Sub(startTime))
 	})
 }

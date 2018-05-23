@@ -1,2 +1,47 @@
-2018/05/23 08:56:32 Recording of the log file has started...
-2018/05/23 08:56:32 Elementary-service started...
+2018/05/23 09:44:22 Recording of the log file has started...
+2018/05/23 09:44:22 Elementary-service started...
+2018/05/23 09:44:25 Executing trianglesSquareSort handler
+2018/05/23 09:44:25 http: multiple response.WriteHeader calls
+2018/05/23 09:44:25 Executing of the trianglesSquareSort handler has finished, exec time: 0s
+2018/05/23 09:44:26 Executing trianglesSquareSort handler
+2018/05/23 09:44:26 http: multiple response.WriteHeader calls
+2018/05/23 09:44:26 Executing of the trianglesSquareSort handler has finished, exec time: 0s
+2018/05/23 09:44:26 Executing trianglesSquareSort handler
+2018/05/23 09:44:26 http: multiple response.WriteHeader calls
+2018/05/23 09:44:26 Executing of the trianglesSquareSort handler has finished, exec time: 0s
+2018/05/23 09:44:27 Executing trianglesSquareSort handler
+2018/05/23 09:44:27 http: multiple response.WriteHeader calls
+2018/05/23 09:44:27 Executing of the trianglesSquareSort handler has finished, exec time: 0s
+2018/05/23 09:44:27 Executing trianglesSquareSort handler
+2018/05/23 09:44:27 http: multiple response.WriteHeader calls
+2018/05/23 09:44:27 Executing of the trianglesSquareSort handler has finished, exec time: 0s
+2018/05/23 09:44:28 Executing trianglesSquareSort handler
+2018/05/23 09:44:28 http: multiple response.WriteHeader calls
+2018/05/23 09:44:28 Executing of the trianglesSquareSort handler has finished, exec time: 1ms
+2018/05/23 09:45:00 Executing trianglesSquareSort handler
+2018/05/23 09:45:00 http: multiple response.WriteHeader calls
+2018/05/23 09:45:00 Executing of the trianglesSquareSort handler has finished, exec time: 0s
+2018/05/23 09:45:09 Executing trianglesSquareSort handler
+2018/05/23 09:45:09 http: multiple response.WriteHeader calls
+2018/05/23 09:45:09 Executing of the trianglesSquareSort handler has finished, exec time: 0s
+2018/05/23 09:45:14 Executing trianglesSquareSort handler
+2018/05/23 09:45:14 http: multiple response.WriteHeader calls
+2018/05/23 09:45:14 Executing of the trianglesSquareSort handler has finished, exec time: 1.0001ms
+2018/05/23 09:45:26 Executing trianglesSquareSort handler
+2018/05/23 09:45:26 http: multiple response.WriteHeader calls
+2018/05/23 09:45:26 Executing of the trianglesSquareSort handler has finished, exec time: 2.0002ms
+2018/05/23 09:46:08 Executing trianglesSquareSort handler
+2018/05/23 09:46:08 http: multiple response.WriteHeader calls
+2018/05/23 09:46:08 Executing of the trianglesSquareSort handler has finished, exec time: 4.0002ms
+2018/05/23 09:46:18 Executing trianglesSquareSort handler
+2018/05/23 09:46:18 http: multiple response.WriteHeader calls
+2018/05/23 09:46:18 Executing of the trianglesSquareSort handler has finished, exec time: 7.0004ms
+2018/05/23 09:46:27 Executing trianglesSquareSort handler
+2018/05/23 09:46:27 http: multiple response.WriteHeader calls
+2018/05/23 09:46:27 Executing of the trianglesSquareSort handler has finished, exec time: 7.0004ms
+2018/05/23 09:46:29 Executing trianglesSquareSort handler
+2018/05/23 09:46:29 http: multiple response.WriteHeader calls
+2018/05/23 09:46:29 Executing of the trianglesSquareSort handler has finished, exec time: 7.0004ms
+2018/05/23 09:46:51 Executing trianglesSquareSort handler
+2018/05/23 09:46:51 http: multiple response.WriteHeader calls
+2018/05/23 09:46:51 Executing of the trianglesSquareSort handler has finished, exec time: 7.0004ms
