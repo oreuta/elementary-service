@@ -5,8 +5,8 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-
 	"github.com/oreuta/elementary-service/src/models/luckyTickets"
+	"time"
 )
 
 type Winner struct {
@@ -20,19 +20,24 @@ func logError(err error) {
 	log.Printf("%s: ERROR %q", serviceName, err.Error())
 }
 
+func LogHandler(h http.Handler) http.Handler{
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		log.Printf("\r\n Executing luckyTicketsLogHandler... start-time: %v \r\n", time.Now().Nanosecond() )
+			Handler(w, r)
+		log.Printf("\r\n LuckyTicketsLogHandler has finished. end-time: %v \r\n", time.Now().Nanosecond())
+	})
+}
+
 // Handler is a REST wrapper for LuckyTickets-function
 func Handler(w http.ResponseWriter, r *http.Request) {
-	log.Printf("%s: start", serviceName)
-	defer log.Printf("%s: stop", serviceName)
-
 	body, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
 	defer r.Body.Close()
+	log.Printf("\r\n %s: input data %s", serviceName, body)
 
-	log.Printf("%s: input data %s", serviceName, body)
 	numbers := new(luckyTickets.TaskContext)
 	err = json.Unmarshal(body, &numbers)
 	if err != nil {
@@ -47,8 +52,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
-	log.Printf("%s: output data %v", serviceName, Winner)
-
+	log.Printf("\r\n %s: output data %v", serviceName, Winner)
 
 	outputJSON, err := json.Marshal(Winner)
 	if err != nil {
